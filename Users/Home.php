@@ -22,9 +22,11 @@ if(empty($_SESSION['user_id'])){
     <title>Document</title>
 </head>
 <body>
-    <form action="">
         <!---create tayo ng appointment pati pag bili ng kanyang property ng condo--->
-        <a href="Logout.php">Log out</a>
-    </form>
+    <a href="Logout.php">Log out</a>
+
+    <h1>Home</h1>
+    <a href="">Appointments</a>
+    <a href="">Buy Condo</a>
 </body>
 </html>

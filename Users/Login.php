@@ -44,15 +44,21 @@ if(isset($_POST['login'])){
         if(mysqli_num_rows($run) == 1){
             $result_fetch = mysqli_fetch_assoc($run);
 
-            if(($_POST['email'] == $result_fetch['email']) && ($_POST['password'] == $_POST['password'])){
-                $_SESSION['user_id'] = $result_fetch ['user_id'];
-                $_SESSION['email'] = $result_fetch['email'];
-                $_SESSION['first_name'] = $result_fetch['first_name'];
-                $_SESSION['last_name'] = $result_fetch['last_name'];
-                header("Location: Home.php");
+            if($result_fetch['email_status'] =='1'){
+                if(($_POST['email'] == $result_fetch['email']) && ($_POST['password'] == $_POST['password'])){
+                    $_SESSION['user_id'] = $result_fetch ['user_id'];
+                    $_SESSION['email'] = $result_fetch['email'];
+                    $_SESSION['first_name'] = $result_fetch['first_name'];
+                    $_SESSION['last_name'] = $result_fetch['last_name'];
+                    header("Location: Home.php");
+                }else{
+                    echo "User Not found 2" . $conn->error;
+                }
             }else{
-                echo "User Not found 2" . $conn->error;
+                echo "<script>alert('Please verify your email address, check on spam or junk') </script>";
             }
+
+            
         }else{
         echo "user not found 1" .$conn->error;
 

@@ -1,6 +1,46 @@
 <?php
 include('../connection.php');
-echo $conn->error;
+use PHPMailer\PHPMailer\PHPMailer;
+
+function sendMail($email,$v_token){
+require_once 'PHPMailer/Exception.php';
+require_once 'PHPMailer/PHPMailer.php';
+require_once 'PHPMailer/SMTP.php';
+$mail = new PHPMailer(true);
+
+
+
+   //email token sent 
+   try{
+        
+    $mail->isSMTP();
+    $mail->Host ='smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'mathewdalisay@gmail.com';
+    $mail->Password = 'dproewbecisldhec';
+    $mail->SMTPSecure = "tls";
+    $mail->Port = '587';
+    $mail->setFrom('mathewdalisay@gmail.com', 'El Pueblo One');
+    $mail->addAddress($email);
+    $mail->isHTML(true);
+    $mail->Subject = 'Email Verification';
+    $mail->Body = "Hello! <h2> In order to finish all of the details please click the link to activate your account, thank you </h2>.
+    
+    <a href='http://$_SERVER[SERVER_NAME]/official_real_estate/Users/verify-email.php?v_token=$v_token'>Click me </a>
+    
+    ";
+
+    $mail->send();
+
+    echo "Sent na sya";
+
+}catch(Exception $e){
+    echo "Error" .$e->getMessage();
+}
+
+}
+
+
 
 ?>
 
@@ -121,6 +161,7 @@ echo $conn->error;
         <br>
 
         <input type="submit" name="register" value="Sign Up">
+        <a href="Login.php">Log In</a>
 
     </form>
 </body>
@@ -129,13 +170,17 @@ echo $conn->error;
 <?php
 
 if(isset($_POST['register'])){
+
+    
+    //date time
     date_default_timezone_set("Asia/Manila");
     $time= date("h:i:s", time());
     $date = date('y-m-d');
 
+    //user id
     $user_id = "2022".rand('55555','999999');
-    
-
+ 
+    //user info
     $first_name = ucwords($_POST['first_name']);
     $middle_name = ucwords($_POST['middle_name']);
     $last_name = ucwords($_POST['last_name']);
@@ -163,19 +208,28 @@ if(isset($_POST['register'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    //token for verification 
+    $v_token = md5(rand());
+    $email_status = 0;
 
-    $query_insert_registration = "INSERT INTO users (user_id,first_name,middle_name,last_name,residence_address,permanent_address,provincial_address,birthdate,age,civil_status,citizenship,name_of_spouse,name_of_father,name_of_mother,number_of_dependents,owned,contact_number,gender,nature_of_work,name_of_employer_business,work_address,telephone,position_in_company,salary_per_month,other_regular_allowance,email,password,date_time_created,date_time_updated) VALUES ('$user_id','$first_name', '$middle_name', '$last_name', '$residence_address', '$permanent_address', '$provincial_address', '$birthdate', '$age', '$civil_address', '$citizenship','$name_of_spouse','$name_of_father', '$name_of_mother', '$number_of_Dependents', '$owned', '$contact_number', '$gender', '$nature_of_work', '$name_of_employer_business', '$work_address', '$telephone', '$position_in_company', '$salary_per_month', '$other_regular_allowance', '$email' ,'$password', '$date $time', '$date $time')";
-    $query_run_insert = mysqli_query($conn,$query_insert_registration);
+ 
 
-    if($query_run_insert){
-        echo "Data Inserted";
+    //validation
+    $query_email = "SELECT * FROM users WHERE email='$email'";
+    $run_email = mysqli_query($conn,$query_email);
+
+    if(mysqli_num_rows($run_email) > 0){
+        echo "<script>alert('Email already used')</script>";
     }else{
-        echo $conn->error;
+        $query_insert_registration = "INSERT INTO users (user_id,first_name,middle_name,last_name,residence_address,permanent_address,provincial_address,birthdate,age,civil_status,citizenship,name_of_spouse,name_of_father,name_of_mother,number_of_dependents,owned,contact_number,gender,nature_of_work,name_of_employer_business,work_address,telephone,position_in_company,salary_per_month,other_regular_allowance,email,password,v_token,email_status,date_time_created,date_time_updated) VALUES ('$user_id','$first_name', '$middle_name', '$last_name', '$residence_address', '$permanent_address', '$provincial_address', '$birthdate', '$age', '$civil_address', '$citizenship','$name_of_spouse','$name_of_father', '$name_of_mother', '$number_of_Dependents', '$owned', '$contact_number', '$gender', '$nature_of_work', '$name_of_employer_business', '$work_address', '$telephone', '$position_in_company', '$salary_per_month', '$other_regular_allowance', '$email' ,'$password','$v_token','$email_status', '$date $time', '$date $time')";
+        $query_run_insert = mysqli_query($conn,$query_insert_registration) && sendMail($email,$v_token);
+    
+        if($query_run_insert){
+            echo "Data Inserted" . "email sent?";
+        }else{
+            echo $conn->error;
+        }
     }
-
-
-
-
 
 }
 

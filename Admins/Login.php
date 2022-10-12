@@ -24,6 +24,7 @@ include('../connection.php');
         <label for="">Password</label>
         <br>
         <input type="password" name="password">
+        <br>
         <input type="submit" name="login" value="Log In">
     </form>
 
@@ -40,14 +41,15 @@ if(isset($_POST['login'])){
     $run = mysqli_query($conn,$sql);
 
     if($run){
-        if(mysqli_num_rows($run) == 1){
-            $result_fetch = mysqli_fetch_asssoc($run);
-
-            if(($_POST['username']) == $result_fetch['username'] && ($_POST['password']) == $result_fetch['password']){
-                $_SESSION['username']= $result_fetch['username'];
-                $_SESSION['name'] $result_fetch['name'];
+        if(mysqli_num_rows($run) > 0){
+            foreach($run as $row){
+                $_SESSION['username'] = $username;
+                $_SESSION['name'] = $row['name'];
+                $_SESSION['admin_id'] = $row['admin_id'];
                 header("Location: Home.php");
             }
+            
+            
         }else{
             echo "User not found" . $conn->error;
         }
