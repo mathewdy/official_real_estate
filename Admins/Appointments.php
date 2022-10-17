@@ -24,6 +24,8 @@ if(empty($_SESSION['username'])){
 </head>
 <body>
 
+<a href="Home.php">Home</a>
+
 
 <!----appointment ng mga clients------>
 
@@ -37,6 +39,7 @@ if(empty($_SESSION['username'])){
                 <th>Email</th>
                 <th>Date</th>
                 <th>Time</th>
+                <th>Appointment Status</th>
                 <th>Options</th>
             </tr>
         </thead>
@@ -60,6 +63,11 @@ if(empty($_SESSION['username'])){
                             <td><?php echo $row ['email']?></td>
                             <td><?php echo $row ['date']?></td>
                             <td><?php echo $row ['time']?></td>
+                            <td><?php if($row ['appointment_status'] == 0){
+                                echo "Pending";
+                            }else{
+                                echo "Confirmed";
+                            }?></td>
                             <td>
                                 <a href="Edit-Appointment.php?appointment_id=<?php echo $row ['appointment_id']?>">Edit</a>
                                 <a href="Delete-Appointment.php?appointment_id=<?php echo $row ['appointment_id']?>">Delete</a>
@@ -122,7 +130,7 @@ if(isset($_POST['add_appointment'])){
     $email = $_POST['email'];
     $appointment_date = $_POST['date'];
     $appointment_time = $_POST['time'];
-    $confirmation = 0;
+    $appointment_status = 0;
     $admin_id = $_SESSION['admin_id'];
 
 
@@ -134,7 +142,7 @@ if(isset($_POST['add_appointment'])){
     if(mysqli_num_rows($run_check_appointment) > 0){
         echo "<script>alert('Appointment Exists') </script>";
     }else{
-        $query_insert_appointment = "INSERT INTO appointments (appointment_id,name,email,date,time,confirmation,admin_id,date_time_created,date_time_updated) VALUES ('$appointment_id','$name', '$email', '$appointment_date', '$appointment_time', '$confirmation', '$admin_id', '$date $time' , '$date $time')";
+        $query_insert_appointment = "INSERT INTO appointments (appointment_id,name,email,date,time,appointment_status,admin_or_user_id,date_time_created,date_time_updated) VALUES ('$appointment_id','$name', '$email', '$appointment_date', '$appointment_time', '$appointment_status', '$admin_id', '$date $time' , '$date $time')";
         $run_insert = mysqli_query($conn,$query_insert_appointment);
 
         if($run_insert){

@@ -26,6 +26,10 @@ ob_start();
         <input type="password" name="password">
         <br>
         <input type="submit" name="login" value="Log In">
+        <br>
+        <a href="">forgot password</a>
+        <br>
+        <a href="Registration.php">Create Account</a>
     </form>
 </body>
 </html>

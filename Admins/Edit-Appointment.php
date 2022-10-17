@@ -37,17 +37,12 @@ $mail = new PHPMailer(true);
     <br> Here is your appointment details.
     <br>
     <h3>Appointment Date:</h3>
-    <br>
     <p>$appointment_date</p>
-    <br>
     <h3>Appointment Time: </h3>
-    <br>
-    <p>$appointment_time</p>
-    <br>
+    <p>$appointment_time . Note: 24 Hour Clock</p>
     <h3>Appointment Id: </h3>
     <p>$appointment_id_1</p>
     <br> To confirm the details, kindly click the link <a href='http://$_SERVER[SERVER_NAME]/official_real_estate/Admins/Confirm-Appointment.php?appointment_id=$appointment_id_1'>Click me </a>
-    
     "
     ;
 
@@ -73,6 +68,7 @@ $mail = new PHPMailer(true);
 </head>
 <body>
     <h1>Edit Appointments</h1>
+    <a href="Appointments.php">Back</a>
     <?php
 
 
@@ -92,7 +88,7 @@ $mail = new PHPMailer(true);
 
                         <label for="">Name</label>
                         <br>
-                        <input type="text" name="name" value="<?php echo $row ['name']?>">
+                        <input type="text" name="name" value="<?php echo $row ['name']?>" readonly>
                         <br>
                         <label for="">Date</label>
                         <br>
@@ -103,7 +99,7 @@ $mail = new PHPMailer(true);
                         <input type="time" name="time" value="<?php echo $row ['time']?>">
                         <br>
                         <input type="hidden" name="email" value="<?php echo $row['email']?>">
-                        <input type="text" name="appointment_id_1" value="<?php echo $row ['appointment_id']?>">
+                        <input type="hidden" name="appointment_id_1" value="<?php echo $row ['appointment_id']?>">
                         <input type="submit" name="upadate_appointment" value="Update">
 
                         

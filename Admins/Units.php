@@ -20,6 +20,7 @@ if(empty($_SESSION['username'])){
 <body>
 
 <a href="Home.php">Back</a>
+<a href="AddUnit.php">Add unit</a>
 
     <h1>Units</h1>
     <table>

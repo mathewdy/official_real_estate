@@ -32,6 +32,7 @@ if(empty($_SESSION['username'])){
         <label for="">Number of Available Units</label>
         <br>
         <input type="number" name="available">
+        <br>
         <label for="">Total Price Contract</label>
         <br>
         <input type="number" name="total_price_contract">

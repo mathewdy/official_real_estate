@@ -1,18 +1,13 @@
 <?php
 ob_start();
 
-session_start();
 include('../connection.php');
-$_SESSION['user_id'];
-$_SESSION['email'];
-$_SESSION['first_name'];
-$_SESSION['last_name'];
-
+session_start();
 if(empty($_SESSION['user_id'])){
     echo "<script>window.location.href='Login.php' </script>";
 }
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,12 +17,12 @@ if(empty($_SESSION['user_id'])){
     <title>Document</title>
 </head>
 <body>
-        <!---create tayo ng appointment pati pag bili ng kanyang property ng condo--->
-    <a href="Logout.php">Log out</a>
-
-    <h1>Home</h1>
-    <a href="Appointments.php">Appointments</a>
-    <a href="Units.php">Buy Unit</a>
-    <a href="Your-Units.php">Your Units</a>
+    <a href="Home.php">Back</a>
+    <h1>Your Units</h1>
 </body>
 </html>
+
+<?php
+
+ob_end_flush();
+?>
