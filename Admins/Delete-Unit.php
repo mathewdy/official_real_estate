@@ -9,8 +9,8 @@ if(isset($_GET['unit_id'])){
     $run = mysqli_query($conn,$query);
 
     if($run){
-        echo "<script>alet('Unit Deleted') </script>";
-        echo "<script>windows.location.href='Units.php' </script>";
+        echo "<script>alert('Unit Deleted'); </script>";
+        echo "<script>window.location.href='Units.php' </script>";
     }else{
         echo "error " . $conn->error;
     }

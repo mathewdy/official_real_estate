@@ -28,13 +28,22 @@ if(empty($_SESSION['email'])){
             $sql = "SELECT * FROM units WHERE unit_id = '$unit_id'";
             $run = mysqli_query($conn,$sql);
 
+
+            
+
             if(mysqli_num_rows($run) > 0){
                 foreach($run as $row){
+
+                    if($row ['available'] == '0'){
+                        echo "<script>alert('Not available'); </script>";
+                        echo "<script>window.location.href='Units.php' </script>";
+                    }
+
                     ?>
 
                         <form action="" method="POST">
 
-                        <label for="">Model</label>
+                        <label for="">Unit Model</label>
                         <br>
                         <input type="text" name="model" value="<?php echo $row ['model']?>" readonly>
                         <br>
@@ -58,11 +67,11 @@ if(empty($_SESSION['email'])){
                         <br>
                         <input type="text" name="net_equity" value="<?php echo $row ['net_equity']?>"readonly>
                         <br>
-                        <label for="">Option Equity</label>
+                        <label for="">Option Equity (36 monthsto Pay) No interest</label>
                         <br>
                         <input type="text" name="option_equity" value="<?php echo $row ['option_equity']?>"readonly>
                         <br>
-                        <label for="">Bank Financing</label>
+                        <label for="">80% Bank Financing</label>
                         <br>
                         <input type="text" name="bank_financing" value="<?php echo $row ['bank_financing']?>"readonly>
                         <br>

@@ -48,7 +48,9 @@ if(empty($_SESSION['username'])){
                 <input type="text" name="type" value="<?php echo $row ['type']?>" >
                 <br>
                 <label for="">Available Units</label>
+                <br>
                 <input type="number" name="available" value="<?php echo $row ['available']?>">
+                <br>
                 <label for="">Total price Contract</label>
                 <br>
                 <input type="number" name="total_price_contract" value="<?php echo $row ['total_price_contract']?>">
@@ -134,7 +136,7 @@ if(isset($_POST['update'])){
         if($run_update){
             move_uploaded_file($_FILES["image"]["tmp_name"], "uploads/".$_FILES["image"]["name"]);
             unlink("uploads/". $old_image);
-            echo "updated";
+            echo "<script>window.location.href='Units.php' </script>";
             // echo "<script>alert('Updated Unit') </script>";
             // echo "<script>window.location.href='Units.php' </script>";
         }else{

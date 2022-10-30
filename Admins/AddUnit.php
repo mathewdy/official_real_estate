@@ -29,6 +29,10 @@ if(empty($_SESSION['username'])){
         <br>
         <input type="text" name="type">
         <br>
+        <label for="">Floor Area</label>
+        <br>
+        <input type="text" name="floor_area">
+        <br>
         <label for="">Number of Available Units</label>
         <br>
         <input type="number" name="available">
@@ -75,6 +79,7 @@ if(isset($_POST['add_unit'])){
 
     $model = $_POST['model'];
     $type = $_POST['type'];
+    $floor_area = $_POST['floor_area'];
     $available = $_POST['available'];
     $total_price_contract = $_POST['total_price_contract'];
     $reservation_fee = $_POST['reservation_fee'];
@@ -105,7 +110,7 @@ if(isset($_POST['add_unit'])){
         if(file_exists("upload/" .$_FILES['image']['name'])){
             $filename = $_FILES['image']['name'];
         }else{
-            $query_insert_unit = "INSERT INTO units (unit_id,model,type,available,total_price_contract,reservation_fee,net_equity,option_equity,bank_financing,image,date_time_created,date_time_updated) VALUES ('$unit_id', '$model','$type','$available', '$total_price_contract','$reservation_fee', '$net_equity', '$option_equity', '$bank_financing', '$image','$date $time', '$date $time')";
+            $query_insert_unit = "INSERT INTO units (unit_id,model,type,floor_area,available,total_price_contract,reservation_fee,net_equity,option_equity,bank_financing,image,date_time_created,date_time_updated) VALUES ('$unit_id', '$model','$type','$floor_area','$available', '$total_price_contract','$reservation_fee', '$net_equity', '$option_equity', '$bank_financing', '$image','$date $time', '$date $time')";
             $sql_insert_unit = mysqli_query($conn,$query_insert_unit);
         
             if($sql_insert_unit){

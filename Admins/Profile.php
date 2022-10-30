@@ -37,6 +37,7 @@ $username = $_SESSION['username'];
                     <p><?php echo $row ['name']?></p>
                     <label for="">Position</label>
                     <p>Admin</p>
+
                 <?php
             }
         }

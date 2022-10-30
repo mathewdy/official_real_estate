@@ -10,10 +10,10 @@ $date = date('y-m-d');
 $_SESSION['user_id']. '<br>';
 $_SESSION['unit_id'] . '<br>';
 $_SESSION['reservation_fee'];
+$reservation_fee = $_SESSION['reservation_fee'];
 
 $user_id = $_SESSION['user_id'];
 $unit_id = $_SESSION['unit_id'];
-$reservation_fee = $_SESSION['reservation_fee'];
 
 $payment_status = '1';
 $payment_method = 'Paypal';
@@ -35,6 +35,9 @@ if(mysqli_num_rows($run_room_id) > 0){
         echo"added unit owner";
         unset($_SESSION['unit_id']);
         unset($_SESSION['reservation_fee']);
+        $subtract_sql = "UPDATE units SET units.available = (units.available - 1) WHERE units.unit_id = '$unit_id'";
+        $run_subtract = mysqli_query($conn,$subtract_sql);
+
         header("Location: Your-Units.php");
     }else{
         echo "error";

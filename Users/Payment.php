@@ -28,6 +28,10 @@ $_SESSION['reservation_fee'];
     <form action="" method="POST" enctype="multipart/form-data">
 
         <h2>Pay Via</h2>
+
+        <h3>You are about to pay:</h3>
+        <p><?php echo $_SESSION['reservation_fee']?></p>
+
             <div id="paypal-payment-button"></div>
                 <h3>Or</h3>
             <label for="">Online Deposit through our company bank account.</label>
@@ -58,7 +62,7 @@ $_SESSION['reservation_fee'];
             return actions.order.create({
                 purchase_units:[{
                 amount: {
-                    value: '<?php echo $_SESSION['reservation_fee']?>',
+                    value:'<?php echo $_SESSION['reservation_fee']?>'
                 }
             }]
         });

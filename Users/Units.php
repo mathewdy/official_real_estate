@@ -32,7 +32,7 @@ if(empty($_SESSION['email'])){
                 foreach($run as $row){
                     ?>
                         
-                        <label for="">Model</label>
+                        <label for="">Unit Model</label>
                         <br>
                         <p><?php echo $row ['model']?></p>
                         <br>
@@ -40,9 +40,21 @@ if(empty($_SESSION['email'])){
                         <br>
                         <p><?php echo $row ['type']?></p>
                         <br>
+                        <label for="">Floor Area</label>
+                        <br>
+                        <p><?php echo $row ['floor_area']?></p>
+                        <br>
                         <label for="">Available</label>
                         <br>
-                        <p><?php echo $row ['available']?></p>
+                        <p>
+                            <?php
+                                if($row ['available'] == '0'){
+                                    echo "Not available";
+                                }else{
+                                    echo $row ['available'];
+                                }
+                            ?>
+                        </p>
                         <label for="">Image</label>
                         <br>
                         <img src="<?php echo "../Admins/uploads/". $row['image']?>" alt="Image" width="100px" height="100px">

@@ -27,8 +27,9 @@ if(empty($_SESSION['username'])){
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Model</th>
+                <th>Unit Model</th>
                 <th>Type</th>
+                <th>Floor Area</th>
                 <th>Available Units</th>
                 <th>Total Price Contract</th>
                 <th>Reservation Fee</th>
@@ -58,6 +59,7 @@ if(empty($_SESSION['username'])){
                                 <td><?php echo $no?></td>
                                 <td><?php echo $row ['model']?></td>
                                 <td><?php echo $row ['type']?></td>
+                                <td><?php echo $row ['floor_area']?></td>
                                 <td><?php echo $row ['available']?></td>
                                 <td><?php echo $row ['total_price_contract']?></td>
                                 <td><?php echo $row ['reservation_fee']?></td>

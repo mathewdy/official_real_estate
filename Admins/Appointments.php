@@ -99,7 +99,7 @@ if(empty($_SESSION['username'])){
         <br>
         <label for="">Email</label>
         <br>
-        <input type="email" name="email">
+        <input type="email" name="email"> 
         <br>
         <label for="">Date</label>
         <br>
@@ -133,26 +133,29 @@ if(isset($_POST['add_appointment'])){
     $appointment_status = 0;
     $admin_id = $_SESSION['admin_id'];
 
+    
+
 
     //validation ng appointment
 
-    $check_appointment = "SELECT * FROM appointments WHERE email = '$email'";
+    $check_appointment = "SELECT * FROM appointments WHERE email = '$email' AND appointment_status = '$appointment_status'";
     $run_check_appointment = mysqli_query($conn,$check_appointment);
 
     if(mysqli_num_rows($run_check_appointment) > 0){
-        echo "<script>alert('Appointment Exists') </script>";
+        echo "<script>alert('Appointment Pending'); </script>";
+        echo "<script>window.location.href='Appointments.php' </script>";
     }else{
+
         $query_insert_appointment = "INSERT INTO appointments (appointment_id,name,email,date,time,appointment_status,admin_or_user_id,date_time_created,date_time_updated) VALUES ('$appointment_id','$name', '$email', '$appointment_date', '$appointment_time', '$appointment_status', '$admin_id', '$date $time' , '$date $time')";
         $run_insert = mysqli_query($conn,$query_insert_appointment);
 
         if($run_insert){
-            echo "Appointment Added";
+            echo "<script>alert('Appointment Added'); </script>";
+            echo "<script>window.location.href='Appointments.php' </script>";
         }else{
             echo "error" . $conn->error;
         }
-
     }
-
     
 }
 
