@@ -143,6 +143,9 @@ $user_id = $_SESSION['user_id'];
                             <td><?php echo $row_account['payment_receive']?></td>
                             <td><?php echo $row_account['payment_method']?></td>
                             <td><?php echo $row_account['total_price_contract']?></td>
+                            <td>
+                                <a href="pdf.php?user_id=<?php echo $row_account ['user_id']?>" target="_blank">Generate Invoice</a>
+                            </td>
                             
                         </tr>
 

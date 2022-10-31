@@ -109,7 +109,7 @@ class Cache
                     throw new ImageException($msg, E_WARNING);
                 }
 
-                if (@file_put_contents($resolved_url, $image) === false) {
+                if (@file_put_contents($resolved_url, $image) === true) {
                     throw new ImageException("Unable to create temporary image in " . $tmp_dir, E_WARNING);
                 }
 
