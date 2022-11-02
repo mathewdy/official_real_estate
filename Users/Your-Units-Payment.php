@@ -109,6 +109,7 @@ if(isset($_POST['proof_of_payment'])){
             $sql_home_owners = mysqli_query($conn,$query_home_owners);
             if($sql_home_owners){
                 move_uploaded_file($_FILES["image"]["tmp_name"], "monthly-payments/".$_FILES["image"]["name"]);
+
                 echo "<script>alert('Monthly Payment Success for room $room_id '); </script>";
                 echo "<script>window.location.href='Your-Units.php'</script>";
             }else{

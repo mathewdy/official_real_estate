@@ -20,6 +20,7 @@ $_SESSION['name'];
     <a href="Units.php">Units</a>
     <a href="Appointments.php">Appointments</a>
     <a href="Profile.php">Profile</a>
+    <a href="Payments.php">Payments</a>
     <a href="Logout.php">Log Out</a>
 </body>
 </html>

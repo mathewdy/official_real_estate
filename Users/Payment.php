@@ -91,6 +91,7 @@ if(isset($_POST['proof_of_payment'])){
     $unit_id = $_SESSION['unit_id'];
     $payment_receive = $_SESSION['reservation_fee'];
     $payment_status = '0';
+    $room_id_1  = "C3".rand('11','30') . substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 3);
 
     //allowed files
     $allowed_extension = array('gif','png','jpg','jpeg', 'PNG', 'GIF', 'JPG', 'JPEG');
@@ -104,12 +105,12 @@ if(isset($_POST['proof_of_payment'])){
         if(file_exists("payments/" .$_FILES['image']['name'])){
             $filename = $_FILES['image']['name'];
         }else{
-            $query_home_owners = "INSERT INTO home_owners (user_id,unit_id,payment_receive,payment_equity,payment_method,payment_status,date_time_created,date_time_updated) VALUES ('$user_id', '$unit_id','$payment_receive','$payment_equity', '$payment_method', '$payment_status','$date $time' , '$date $time')";
+            $query_home_owners = "INSERT INTO home_owners (user_id,unit_id,room_id,payment_receive,payment_equity,payment_method,payment_status,date_time_created,date_time_updated) VALUES ('$user_id', '$unit_id','$room_id_1','$payment_receive','$payment_equity', '$payment_method', '$payment_status','$date $time' , '$date $time')";
             $sql_home_owners = mysqli_query($conn,$query_home_owners);
             if($sql_home_owners){
                 move_uploaded_file($_FILES["image"]["tmp_name"], "payments/".$_FILES["image"]["name"]);
                 echo "<script>alert('Added Unit'); </script>";
-                echo "<script>window.location.href='Units.php'</script>";
+                echo "<script>window.location.href='Your-Units.php'</script>";
             }else{
                 echo "error" .$conn->error;
             }

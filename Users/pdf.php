@@ -69,9 +69,10 @@ if(mysqli_num_rows($run) > 0){
         $amount = $row['payment_receive'];
         $payment_equity = $row ['payment_equity'];
         $payment_method = $row ['payment_method'];
-
         $d = strtotime($row['date_time_created']);
         date("M-d-Y", $d);
+
+
     }
 }
 

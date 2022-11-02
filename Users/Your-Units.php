@@ -140,11 +140,29 @@ $user_id = $_SESSION['user_id'];
                             </td>
                             <td><?php echo $row_account['payment_equity']?></td>
 
-                            <td><?php echo $row_account['payment_receive']?></td>
+                            <td>
+                                <?php 
+                                   
+                                    if($row_account ['payment_status'] == '1'){
+                                            echo $row_account ['payment_receive'];
+                                    }else{
+                                        echo "Pedning";
+                                    }
+                                ?>
+                            </td>
                             <td><?php echo $row_account['payment_method']?></td>
                             <td><?php echo $row_account['total_price_contract']?></td>
                             <td>
-                                <a href="pdf.php?user_id=<?php echo $row_account ['user_id']?>" target="_blank">Generate Invoice</a>
+
+                                <?php
+                                    if($row_account ['payment_status'] == '1'){
+                                        echo '<a href="pdf.php?user_id=<?php echo $row_account [user_id]?>" target="_blank">Generate Invoice</a>';
+                                    }else{
+                                        echo "";
+                                    }   
+                                ?>
+
+                                
                             </td>
                             
                         </tr>
