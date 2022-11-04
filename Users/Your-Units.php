@@ -146,7 +146,7 @@ $user_id = $_SESSION['user_id'];
                                     if($row_account ['payment_status'] == '1'){
                                             echo $row_account ['payment_receive'];
                                     }else{
-                                        echo "Pedning";
+                                        echo "Pending";
                                     }
                                 ?>
                             </td>

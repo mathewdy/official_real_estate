@@ -1,8 +1,22 @@
 <?php
+ob_start();
+session_start();
+
+$unit_id = $_SESSION['unit_id'];
+$room_id = $_SESSION['room_id'] ;
+$model = $_SESSION['model'] ;
+$type = $_SESSION['type'] ;
+$floor_area = $_SESSION['floor_area'];
+$total_price_contract = $_SESSION['total_price_contract'] ;
+$option_equity = $_SESSION['option_equity'] ;
+$bank_financing = $_SESSION['bank_financing'] ;
+$reservation_fee = $_SESSION['reservation_fee'];
+
+
 include('../connection.php');
 use PHPMailer\PHPMailer\PHPMailer;
 
-function sendMail($email,$v_token){
+function sendMail($email,$v_token,$user_id){
 require_once 'PHPMailer/Exception.php';
 require_once 'PHPMailer/PHPMailer.php';
 require_once 'PHPMailer/SMTP.php';
@@ -26,14 +40,12 @@ $mail = new PHPMailer(true);
     $mail->Subject = 'Email Verification';
     $mail->Body = "Hello! <h2> In order to finish all of the details please click the link to activate your account, thank you </h2>.
     
-    <a href='http://$_SERVER[SERVER_NAME]/official_real_estate/Users/verify-email.php?v_token=$v_token'>Click me </a>
-    
+    <a href='http://$_SERVER[SERVER_NAME]/official_real_estate/View-Unit/verify-email.php?v_token=$v_token&&user_id=$user_id'>Click me </a>
     ";
 
     $mail->send();
 
     echo "<script>alert('Check your spam or junk mails') </script>";
-
 
 }catch(Exception $e){
     echo "Error" .$e->getMessage();
@@ -162,7 +174,7 @@ $mail = new PHPMailer(true);
         <br>
 
         <input type="submit" name="register" value="Sign Up">
-        <a href="Login.php">Log In</a>
+        <a href="../Users/Login.php">Log In</a>
 
     </form>
 </body>
@@ -223,8 +235,8 @@ if(isset($_POST['register'])){
         echo "<script>alert('Email already used')</script>";
     }else{
         $query_insert_registration = "INSERT INTO users (user_id,first_name,middle_name,last_name,residence_address,permanent_address,provincial_address,birthdate,age,civil_status,citizenship,name_of_spouse,name_of_father,name_of_mother,number_of_dependents,owned,contact_number,gender,nature_of_work,name_of_employer_business,work_address,telephone,position_in_company,salary_per_month,other_regular_allowance,email,password,v_token,email_status,date_time_created,date_time_updated) VALUES ('$user_id','$first_name', '$middle_name', '$last_name', '$residence_address', '$permanent_address', '$provincial_address', '$birthdate', '$age', '$civil_address', '$citizenship','$name_of_spouse','$name_of_father', '$name_of_mother', '$number_of_Dependents', '$owned', '$contact_number', '$gender', '$nature_of_work', '$name_of_employer_business', '$work_address', '$telephone', '$position_in_company', '$salary_per_month', '$other_regular_allowance', '$email' ,'$password','$v_token','$email_status', '$date $time', '$date $time')";
-        $query_run_insert = mysqli_query($conn,$query_insert_registration) && sendMail($email,$v_token);
-    
+        $query_run_insert = mysqli_query($conn,$query_insert_registration) && sendMail($email,$v_token,$user_id);
+        
         if($query_run_insert){
             echo "Data Inserted" . "email sent?";
         }else{

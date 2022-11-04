@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2022 at 01:50 AM
+-- Generation Time: Nov 04, 2022 at 12:50 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -89,14 +89,6 @@ CREATE TABLE `home_owners` (
   `date_time_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `home_owners`
---
-
-INSERT INTO `home_owners` (`id`, `user_id`, `unit_id`, `room_id`, `payment_receive`, `payment_equity`, `payment_method`, `payment_status`, `date_time_created`, `date_time_updated`) VALUES
-(31, '2022953074', '202268sw', 'C316nhz', '6610', 'Reservation Fee', 'Online Deposit', 0, '2022-11-02 05:39:29', '2022-11-02 05:39:29'),
-(32, '2022953074', '202268sw', 'C316nhz', '7040', 'Option Equity', 'Paypal', 1, '2022-11-02 05:55:31', '2022-11-02 05:55:31');
-
 -- --------------------------------------------------------
 
 --
@@ -174,8 +166,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_id`, `first_name`, `middle_name`, `last_name`, `residence_address`, `permanent_address`, `provincial_address`, `birthdate`, `age`, `civil_status`, `citizenship`, `name_of_spouse`, `name_of_father`, `name_of_mother`, `number_of_dependents`, `owned`, `contact_number`, `gender`, `nature_of_work`, `name_of_employer_business`, `work_address`, `telephone`, `position_in_company`, `salary_per_month`, `other_regular_allowance`, `email`, `password`, `v_token`, `email_status`, `date_time_created`, `date_time_updated`) VALUES
-(11, '2022953074', 'Paki', 'Raphael', 'Lacota', 'Halla', 'Drake', 'Vance', '1973-03-31', '182', 'Married', 'Stuart', 'Neville', 'Kenneth', 'Basil', '839', 'Rented', '248', 'Female', 'Employed Individual', 'Rosalyn', 'Timon', 'April', 'Clementine', 'Medge', 'Holmes', 'mathewdalisay@gmail.com', '123', 'e6641cb1a66353c1c98dca81fcdfec0c', 1, '22-10-17 01:07:26', '22-10-17 01:07:26'),
-(12, '2022714814', 'Logan', 'Carla', 'Damon', 'Mara', 'Ina', 'Jared', '1990-03-22', '534', 'Civil Partnership', 'Craig', 'Skyler', 'Ezra', 'Aretha', '135', 'Rented', '290', 'Female', 'Self-Employed', 'Barry', 'Matthew', 'Karyn', 'Olympia', 'Brenden', 'Barclay', 'leonidafrancisco12@gmail.com', '123', '2a6cdb41c850dafb5732ce2f143b7483', 1, '22-10-31 05:12:29', '22-10-31 05:12:29');
+(23, '202294716', 'Bree', 'Malcolm', 'Elmo', 'Germane', 'Jeremy', 'Myra', '1979-06-18', '100', 'Divorced', 'Abra', 'Alec', 'Abbot', 'Linus', '932', 'Owned', '644', 'Female', 'Employed Individual', 'Jolene', 'Roanna', 'Elmo', 'Lenore', 'Lee', 'Karyn', 'mathewdalisay@gmail.com', '123', '79dae9cc9ba95cbda59279c65e5ea628', 1, '22-11-04 07:48:11', '22-11-04 07:48:11');
 
 --
 -- Indexes for dumped tables
@@ -237,7 +228,7 @@ ALTER TABLE `appointments`
 -- AUTO_INCREMENT for table `home_owners`
 --
 ALTER TABLE `home_owners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `units`
@@ -249,7 +240,7 @@ ALTER TABLE `units`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
