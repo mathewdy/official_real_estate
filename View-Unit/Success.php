@@ -38,7 +38,7 @@ if(mysqli_num_rows($run_room_id) > 0){
         $subtract_sql = "UPDATE units SET units.available = (units.available - 1) WHERE units.unit_id = '$unit_id'";
         $run_subtract = mysqli_query($conn,$subtract_sql);
 
-        header("Location: Your-Units.php");
+        echo "<script>window.location.href='../Users/Home.php'</script>";
     }else{
         echo "error";
     }

@@ -3,7 +3,7 @@ ob_start();
 session_start();
 include('../connection.php');
 
-if(empty($_SESSION['email'])){
+if(empty($_SESSION['user_id'])){
     echo "<script>window.location.href='Login.php' </script>";
 }
 ?>

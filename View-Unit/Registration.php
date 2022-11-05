@@ -236,7 +236,7 @@ if(isset($_POST['register'])){
     }else{
         $query_insert_registration = "INSERT INTO users (user_id,first_name,middle_name,last_name,residence_address,permanent_address,provincial_address,birthdate,age,civil_status,citizenship,name_of_spouse,name_of_father,name_of_mother,number_of_dependents,owned,contact_number,gender,nature_of_work,name_of_employer_business,work_address,telephone,position_in_company,salary_per_month,other_regular_allowance,email,password,v_token,email_status,date_time_created,date_time_updated) VALUES ('$user_id','$first_name', '$middle_name', '$last_name', '$residence_address', '$permanent_address', '$provincial_address', '$birthdate', '$age', '$civil_address', '$citizenship','$name_of_spouse','$name_of_father', '$name_of_mother', '$number_of_Dependents', '$owned', '$contact_number', '$gender', '$nature_of_work', '$name_of_employer_business', '$work_address', '$telephone', '$position_in_company', '$salary_per_month', '$other_regular_allowance', '$email' ,'$password','$v_token','$email_status', '$date $time', '$date $time')";
         $query_run_insert = mysqli_query($conn,$query_insert_registration) && sendMail($email,$v_token,$user_id);
-        
+        $_SESSION['user_id'] = $user_id;
         if($query_run_insert){
             echo "Data Inserted" . "email sent?";
         }else{

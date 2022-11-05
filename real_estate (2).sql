@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2022 at 12:50 PM
+-- Generation Time: Nov 05, 2022 at 10:11 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -92,6 +92,30 @@ CREATE TABLE `home_owners` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `questions`
+--
+
+CREATE TABLE `questions` (
+  `id` int(11) NOT NULL,
+  `user_id` varchar(50) NOT NULL,
+  `question_1` varchar(50) NOT NULL,
+  `answer_1` varchar(50) NOT NULL,
+  `question_2` varchar(50) NOT NULL,
+  `answer_2` varchar(50) NOT NULL,
+  `date_time_created` datetime NOT NULL,
+  `date_time_updated` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`id`, `user_id`, `question_1`, `answer_1`, `question_2`, `answer_2`, `date_time_created`, `date_time_updated`) VALUES
+(1, '2022333467', 'What was your favorite food as a child?', '123', 'What is the name of your first pet?', '12', '2022-11-06 04:03:10', '2022-11-06 04:03:10');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `units`
 --
 
@@ -117,8 +141,8 @@ CREATE TABLE `units` (
 --
 
 INSERT INTO `units` (`id`, `unit_id`, `model`, `type`, `floor_area`, `available`, `total_price_contract`, `reservation_fee`, `net_equity`, `option_equity`, `bank_financing`, `image`, `date_time_created`, `date_time_updated`) VALUES
-(14, '202268sw', 'model ka', '123123123', 36.63, 8, '54600', '6610', '2550', '7040', '4810', 'mirana.jpg', '2022-10-17 02:12:41', '2022-10-30 01:43:48'),
-(19, '2022467o', '930', '74', 623, 735, '872', '840', '410', '951', '111', 'mirana.jpg', '2022-10-30 01:45:53', '2022-10-30 01:45:53');
+(14, '202268sw', 'model ka', '123123123', 36.63, 4, '54600', '6610', '2550', '7040', '4810', 'mirana.jpg', '2022-10-17 02:12:41', '2022-10-30 01:43:48'),
+(19, '2022467o', '930', '74', 623, 733, '872', '840', '410', '951', '111', 'mirana.jpg', '2022-10-30 01:45:53', '2022-10-30 01:45:53');
 
 -- --------------------------------------------------------
 
@@ -166,7 +190,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_id`, `first_name`, `middle_name`, `last_name`, `residence_address`, `permanent_address`, `provincial_address`, `birthdate`, `age`, `civil_status`, `citizenship`, `name_of_spouse`, `name_of_father`, `name_of_mother`, `number_of_dependents`, `owned`, `contact_number`, `gender`, `nature_of_work`, `name_of_employer_business`, `work_address`, `telephone`, `position_in_company`, `salary_per_month`, `other_regular_allowance`, `email`, `password`, `v_token`, `email_status`, `date_time_created`, `date_time_updated`) VALUES
-(23, '202294716', 'Bree', 'Malcolm', 'Elmo', 'Germane', 'Jeremy', 'Myra', '1979-06-18', '100', 'Divorced', 'Abra', 'Alec', 'Abbot', 'Linus', '932', 'Owned', '644', 'Female', 'Employed Individual', 'Jolene', 'Roanna', 'Elmo', 'Lenore', 'Lee', 'Karyn', 'mathewdalisay@gmail.com', '123', '79dae9cc9ba95cbda59279c65e5ea628', 1, '22-11-04 07:48:11', '22-11-04 07:48:11');
+(38, '2022333467', 'Ethan', 'Nora', 'Risa', 'Ciaran', 'Noelani', 'Hedwig', '1972-09-10', '971', 'Single', 'Mufutau', 'Tamekah', 'Tallulah', 'Keiko', '431', 'Rented', '464', 'Male', 'Contract Worker', 'Alana', 'Karly', 'Kathleen', 'Zachery', 'Phillip', 'Ivor', 'mathewdalisay@gmail.com', 'haha', '7d361c21490027db0c10d61b31696c01', 1, '22-11-06 04:02:48', '22-11-06 04:02:48');
 
 --
 -- Indexes for dumped tables
@@ -193,6 +217,13 @@ ALTER TABLE `home_owners`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`,`unit_id`),
   ADD KEY `unit_id` (`unit_id`);
+
+--
+-- Indexes for table `questions`
+--
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `units`
@@ -228,7 +259,13 @@ ALTER TABLE `appointments`
 -- AUTO_INCREMENT for table `home_owners`
 --
 ALTER TABLE `home_owners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
+--
+-- AUTO_INCREMENT for table `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `units`
@@ -240,7 +277,7 @@ ALTER TABLE `units`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- Constraints for dumped tables
@@ -250,8 +287,14 @@ ALTER TABLE `users`
 -- Constraints for table `home_owners`
 --
 ALTER TABLE `home_owners`
-  ADD CONSTRAINT `home_owners_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `home_owners_ibfk_2` FOREIGN KEY (`unit_id`) REFERENCES `units` (`unit_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `home_owners_ibfk_2` FOREIGN KEY (`unit_id`) REFERENCES `units` (`unit_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `home_owners_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `questions`
+--
+ALTER TABLE `questions`
+  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

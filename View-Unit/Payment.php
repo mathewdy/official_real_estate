@@ -5,7 +5,7 @@ include('../connection.php');
 session_start();
 
 
-$_SESSION['user_id'] ;
+echo $_SESSION['user_id'] ;
 $_SESSION['unit_id'] ;
 $_SESSION['reservation_fee'];
 ?>
@@ -23,31 +23,10 @@ $_SESSION['reservation_fee'];
     <a href="Home.php">Cancel</a>
     <h2>Payment Methods</h2>
 
-    <form action="" method="POST" enctype="multipart/form-data">
 
-        <h2>Pay Via</h2>
-
-        <h3>You are about to pay:</h3>
-        <p><?php echo $_SESSION['reservation_fee']?></p>
-
-            <div id="paypal-payment-button"></div>
-                <h3>Or</h3>
-            <label for="">Online Deposit through our company bank account.</label>
-            <br>
-            <strong>
-            PHOENIX SUN INTERNATIONAL CORP.
-            <br>
-            PHILIPPINES NATIONAL BANK – 7th Ave. Branch,BGC Taguig City
-            <br>
-            ACCOUNT NO. : 144-170001114
-        </strong>
-        <p>Then Send a proof of payment here!</p>
-        <strong>Note: It will take a 3 business days for prior notice and you will recieve a confirmation details via email</strong>
-        <br>
-        <input type="file" name="image">
-        <br>
-        <input type="submit" name="proof_of_payment" value="Send Payment">
-    </form>
+    <p><?php echo $_SESSION['reservation_fee']?></p>
+    <div id="paypal-payment-button"></div>
+               
 </body>
 </html>
 
@@ -82,7 +61,6 @@ if(isset($_POST['proof_of_payment'])){
     date_default_timezone_set("Asia/Manila");
     $time= date("h:i:s", time());
     $date = date('y-m-d');
-    $image = $_FILES['image']['name'];
     $payment_method = 'Online Deposit';
     $payment_equity = 'Reservation Fee';
     $user_id = $_SESSION['user_id'];
@@ -92,28 +70,16 @@ if(isset($_POST['proof_of_payment'])){
     $room_id_1  = "C3".rand('11','30') . substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 3);
 
     //allowed files
-    $allowed_extension = array('gif','png','jpg','jpeg', 'PNG', 'GIF', 'JPG', 'JPEG');
-    $filename = $_FILES['image']['name'];
-    $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
-    if(!in_array($file_extension,$allowed_extension)){
-        echo "<script>alert('File not allowed'); </script>";
-        echo "<script>window.location.href='Payment.php'</script>";
+    
+    $query_home_owners = "INSERT INTO home_owners (user_id,unit_id,room_id,payment_receive,payment_equity,payment_method,payment_status,date_time_created,date_time_updated) VALUES ('$user_id', '$unit_id','$room_id_1','$payment_receive','$payment_equity', '$payment_method', '$payment_status','$date $time' , '$date $time')";
+    $sql_home_owners = mysqli_query($conn,$query_home_owners);
+    if($sql_home_owners){
+        echo "<script>alert('Added Unit'); </script>";
+        echo "<script>window.location.href='../Users/Home.php'</script>";
     }else{
-        
-        if(file_exists("payments/" .$_FILES['image']['name'])){
-            $filename = $_FILES['image']['name'];
-        }else{
-            $query_home_owners = "INSERT INTO home_owners (user_id,unit_id,room_id,payment_receive,payment_equity,payment_method,payment_status,date_time_created,date_time_updated) VALUES ('$user_id', '$unit_id','$room_id_1','$payment_receive','$payment_equity', '$payment_method', '$payment_status','$date $time' , '$date $time')";
-            $sql_home_owners = mysqli_query($conn,$query_home_owners);
-            if($sql_home_owners){
-                move_uploaded_file($_FILES["image"]["tmp_name"], "payments/".$_FILES["image"]["name"]);
-                echo "<script>alert('Added Unit'); </script>";
-                echo "<script>window.location.href='Your-Units.php'</script>";
-            }else{
-                echo "error" .$conn->error;
-            }
-        }
+        echo "error" .$conn->error;
     }
+        
 }
 
 ob_end_flush();

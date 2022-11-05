@@ -3,6 +3,9 @@ ob_start();
 session_start();
 include('../connection.php');
 $user_id = $_SESSION['user_id'];
+if(empty($_SESSION['user_id'])){
+    echo "<script>window.location.href='Login.php' </script>";
+}
 
 
 if(isset($_GET['user_id'])){
