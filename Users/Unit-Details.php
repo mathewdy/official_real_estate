@@ -17,7 +17,9 @@ if(empty($_SESSION['user_id'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/headers.css">
+    <link rel="stylesheet" href="css/form-validation.css">
     <title>Real Estate Management</title>
+    
 </head>
 <body>
 
@@ -74,8 +76,6 @@ if(empty($_SESSION['user_id'])){
             $run = mysqli_query($conn,$sql);
 
 
-            
-
             if(mysqli_num_rows($run) > 0){
                 foreach($run as $row){
 
@@ -86,46 +86,99 @@ if(empty($_SESSION['user_id'])){
 
                     ?>
 
-                        <form action="" method="POST">
+                        <center>
+                            <div class="container_1">
+                                <form action="" method="POST" class="needs-validation" novalidate>
 
-                        <label for="">Unit Model</label>
-                        <br>
-                        <input type="text" name="model" value="<?php echo $row ['model']?>" readonly>
-                        <br>
-                        <label for="">Type</label>
-                        <br>
-                        <input type="text" name="type" value="<?php echo $row ['type']?>"readonly>
-                        <br>
-                        <label for="">Available Units</label>
-                        <br>
-                        <input type="text" name="available_units" value="<?php echo $row ['available']?>"readonly>
-                        <br>
-                        <label for="">Total Price Contract</label>
-                        <br>
-                        <input type="text" name="total_price_contract" value="<?php echo $row ['total_price_contract']?>"readonly>
-                        <br>
-                        <label for="">Reservation Fee</label>
-                        <br>
-                        <input type="text" name="reservation_fee" value="<?php echo $row ['reservation_fee']?>"readonly>
-                        <br>
-                        <label for="">Net Equity</label>
-                        <br>
-                        <input type="text" name="net_equity" value="<?php echo $row ['net_equity']?>"readonly>
-                        <br>
-                        <label for="">Option Equity (36 months to Pay) No interest</label>
-                        <br>
-                        <input type="text" name="option_equity" value="<?php echo $row ['option_equity']?>"readonly>
-                        <br>
-                        <label for="">80% Bank Financing</label>
-                        <br>
-                        <input type="text" name="bank_financing" value="<?php echo $row ['bank_financing']?>"readonly>
-                        <br>
-                        <label for="">Image</label>
-                        <br>
-                        <img src="<?php echo "../Admins/uploads/". $row['image']?>" alt="Image" width="100px" height="100px">
-                        <br>
+                                <div class="col-md-7 col-lg-8">
+                                <h4 class="mb-3">View Details</h4>
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <label for="firstName" class="form-label">Unit Model</label>
+                                            <input type="text" class="form-control" style="background-color: white;" id="firstName" placeholder="" value="<?php echo $row['model']?>" required readonly>
+                                            <div class="invalid-feedback">
+                                                Model is required.
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label for="lastName" class="form-label">Unit Type</label>
+                                            <input type="text" class="form-control" style="background-color: white;" name="type" id="lastName" placeholder="" value="<?php echo $row ['type']?>" required readonly>
+                                            <div class="invalid-feedback">
+                                                Unit type is required.
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label for="lastName" class="form-label">Available Units</label>
+                                            <input type="text" class="form-control" name="available_units" style="background-color: white;" name="type" id="lastName" placeholder="" value="<?php echo $row ['available']?>" required readonly>
+                                            <div class="invalid-feedback">
+                                                Available Units is required.
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label for="lastName" class="form-label">Total Price Contract</label>
+                                            <span>&#8369;</span>
+                                            <input type="text" class="form-control" name="total_price_contract" style="background-color: white;" name="type" id="lastName" placeholder="" value="<?php echo $row ['total_price_contract']?>" required readonly>
+                                            <div class="invalid-feedback">
+                                                Total Price Contract is required.
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label for="lastName" class="form-label">Reservation Fee</label>
+                                            <input type="text" class="form-control" name="reservation_fee" style="background-color: white;" name="type" id="lastName" placeholder="" value="<?php echo $row ['reservation_fee']?>" required readonly>
+                                            <div class="invalid-feedback">
+                                                Reservation Fee is required.
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label for="lastName" class="form-label">Net Equity</label>
+                                            <input type="text" class="form-control" name="net_equity" style="background-color: white;" name="type" id="lastName" placeholder="" value="<?php echo $row ['net_equity']?>" required readonly>
+                                            <div class="invalid-feedback">
+                                                Net Equity is required.
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label for="lastName" class="form-label">Option Equity (36 months to Pay)</label>
+                                            <input type="text" class="form-control" name="option_equity" style="background-color: white;" name="type" id="lastName" placeholder="" value="<?php echo $row ['option_equity']?>" required readonly>
+                                            <div class="invalid-feedback">
+                                                Option Equity is required.
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label for="lastName" class="form-label">80% Bank Financing</label>
+                                            <input type="text" class="form-control" name="bank_financing" style="background-color: white;" name="type" id="lastName" placeholder="" value="<?php echo $row ['bank_financing']?>" required readonly>
+                                            <div class="invalid-feedback">
+                                                Bank Financing is required.
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </div>
+
+                                </div>
+
+
+                                
+                            </div>
+                        </center>
+                            <div class="col-md-5 col-lg-4 order-md-last">
+                                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="text-primary">Image</span>
+                                </h4>
+                                <img src="<?php echo "../Admins/uploads/". $row['image']?>" alt="Image" width="100px" height="100px">
+                            </div>
                         <input type="hidden" name="unit_id" value="<?php echo $row ['unit_id']?>">
-                        <input type="submit" name="next" class="btn btn-primary" value="Next">
+                        <center>
+                            <input type="submit" name="next" class="btn btn-primary" value="Next">
+                        </center>
                         <input type="hidden" name="process" value="1">
                         </form>
                   
@@ -137,6 +190,29 @@ if(empty($_SESSION['user_id'])){
     ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+
+</script>
 </body>
 </html>
 
