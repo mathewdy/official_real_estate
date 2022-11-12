@@ -14,11 +14,13 @@ class ComposerStaticInit0ca48d2b550d5295425a7608d22c9a72
         ),
         'M' => 
         array (
+            'MessageBird\\' => 12,
             'Masterminds\\' => 12,
         ),
         'F' => 
         array (
             'FontLib\\' => 8,
+            'Firebase\\JWT\\' => 13,
         ),
         'D' => 
         array (
@@ -35,6 +37,10 @@ class ComposerStaticInit0ca48d2b550d5295425a7608d22c9a72
         array (
             0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
         ),
+        'MessageBird\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird',
+        ),
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
@@ -42,6 +48,10 @@ class ComposerStaticInit0ca48d2b550d5295425a7608d22c9a72
         'FontLib\\' => 
         array (
             0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
         'Dompdf\\' => 
         array (

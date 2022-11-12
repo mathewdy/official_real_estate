@@ -16,6 +16,7 @@ $_SESSION['option_equity'];
 $user_id = $_SESSION['user_id'];
 
 $room_id = $_SESSION['room_id'];
+$_SESSION['contact_number'];
 
 ?>
 
