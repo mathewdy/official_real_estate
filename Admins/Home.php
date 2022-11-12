@@ -22,6 +22,32 @@ $_SESSION['name'];
     <a href="Profile.php">Profile</a>
     <a href="Payments.php">Payments</a>
     <a href="Logout.php">Log Out</a>
+
+
+    <!---dashboard kase total payment recieved via paypal--->
+
+    <?php
+
+
+        $sql = "SELECT SUM(home_owners.payment_receive) AS total_payment_received
+        FROM home_owners";
+        $run = mysqli_query($conn,$sql);
+
+        if(mysqli_num_rows($run ) > 0){
+            foreach($run as $row){
+                ?>
+
+                    <h2>Total Earnings:</h2>
+                    <p><?php echo $row ['total_payment_received']?></p>
+
+                <?php
+
+            }
+        }
+
+
+    ?>
+
 </body>
 </html>
 

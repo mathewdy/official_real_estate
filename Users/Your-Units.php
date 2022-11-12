@@ -78,13 +78,15 @@ $user_id = $_SESSION['user_id'];
         <tbody>
             <?php
 
+                //query 1
                 $query = "SELECT units.unit_id AS unit_id, units.model AS model, home_owners.room_id AS room_id, units.floor_area AS floor_area, units.total_price_contract AS total_price_contract, units.option_equity AS option_equity,
                 home_owners.payment_receive AS payment_receive, home_owners.payment_method AS payment_method,  home_owners.unit_id , home_owners.user_id AS user_id , units.type AS type, home_owners.date_time_created AS date_time_created
                 FROM units
                 LEFT JOIN home_owners ON units.unit_id = home_owners.unit_id
-                WHERE home_owners.user_id = '$user_id' AND home_owners.payment_equity = 'Reservation Fee'";
+                WHERE home_owners.user_id = '$user_id' AND home_owners.payment_equity = 'Reservation Fee' ";
                 $run = mysqli_query($conn,$query);
 
+                
                 if(mysqli_num_rows($run) > 0){
                     $no = 1;
                     foreach ($run as $row){
@@ -122,12 +124,15 @@ $user_id = $_SESSION['user_id'];
                             </form>
                         </tr>
 
+
+
                         <?php
                     $no++;
                     }
                 }else{
                     echo "No Units yet" . $conn->error;
                 }
+
             ?>
         </tbody>
     </table>
@@ -142,8 +147,6 @@ $user_id = $_SESSION['user_id'];
                 <th>Payment Equity</th>
                 <th>Your Pament</th>
                 <th>Payment Method</th>
-                <th>Total Price Contract</th>
-
             </tr>
         </thead>
         <tbody>
@@ -153,7 +156,7 @@ $user_id = $_SESSION['user_id'];
                 home_owners.payment_receive AS payment_receive, home_owners.payment_method AS payment_method,  home_owners.unit_id , home_owners.user_id AS user_id , units.type AS type, home_owners.date_time_created AS date_time_created, home_owners.payment_equity AS payment_equity,home_owners.payment_status AS payment_status
                 FROM units
                 LEFT JOIN home_owners ON units.unit_id = home_owners.unit_id
-                WHERE home_owners.user_id = '$user_id'";
+                WHERE home_owners.user_id = '$user_id' ORDER BY home_owners.date_time_created DESC";
                 $run_account = mysqli_query($conn,$query_statement_of_Account);
 
                 if(mysqli_num_rows($run_account) > 0){
@@ -177,7 +180,16 @@ $user_id = $_SESSION['user_id'];
                                     }
                                 ?>
                             </td>
-                            <td><?php echo $row_account['payment_equity']?></td>
+                            <td>
+                                <?php 
+                                    if($row_account['payment_equity'] == 'Option Equity'){
+                                        echo "Monthly Fee";
+                                    }else{
+                                        echo "Reservation Fee";
+                                    }
+                                ?>
+                            
+                            </td>
 
                             <td>
                                 <?php 
@@ -190,7 +202,6 @@ $user_id = $_SESSION['user_id'];
                                 ?>
                             </td>
                             <td><?php echo $row_account['payment_method']?></td>
-                            <td><?php echo $row_account['total_price_contract']?></td>
                             <td>
 
                                 <?php
@@ -200,8 +211,6 @@ $user_id = $_SESSION['user_id'];
                                         echo "";
                                     }   
                                 ?>
-
-                                
                             </td>
                             
                         </tr>
@@ -215,6 +224,8 @@ $user_id = $_SESSION['user_id'];
             ?>
         </tbody>
     </table>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

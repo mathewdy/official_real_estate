@@ -201,30 +201,58 @@ ob_start();
         <label for="">Type</label>
         <label for="">Image</label>
 
+
+
     <?php
 
-                $query_select = "SELECT * FROM units";
-                $run_select = mysqli_query($conn,$query_select);
+        $query_select = "SELECT * FROM units LIMIT 3";
+        $run_select = mysqli_query($conn,$query_select);
 
-                if(mysqli_fetch_array($run_select) > 0){
-                    foreach($run_select as $row){
-                        
-                        ?>
-                            <p><?php echo $row ['model']?></p>
-                            <p><?php echo $row ['type']?></p>
-                            <img src="<?php echo "Admins/uploads/". $row['image']?>" alt="Image" width="100px" height="100px">
-                            <br>
-                            <a href="View-Unit/View-Unit.php?unit_id=<?php echo $row ['unit_id']?>">View Unit</a>
-                            
-
-
-
-                        <?php
-                    }
+        if(mysqli_fetch_array($run_select) > 0){
+            foreach($run_select as $row){
                 
-                }
+                ?>
+                    <p><?php echo $row ['model']?></p>
+                    <p><?php echo $row ['type']?></p>
+                    <img src="<?php echo "Admins/uploads/". $row['image']?>" alt="Image" width="100px" height="100px">
+                    <br>
+                    <a href="View-Unit/View-Unit.php?unit_id=<?php echo $row ['unit_id']?>">View Unit</a>
+                    
 
-            ?> -->
+
+
+                <?php
+            }
+        
+        }
+
+    ?> -->
+
+
+    <?php
+
+    $query_select = "SELECT * FROM units LIMIT";
+    $run_select = mysqli_query($conn,$query_select);
+
+    if(mysqli_fetch_array($run_select) > 0){
+        foreach($run_select as $row){
+            
+            ?>
+                <p><?php echo $row ['model']?></p>
+                <p><?php echo $row ['type']?></p>
+                <img src="<?php echo "Admins/uploads/". $row['image']?>" alt="Image" width="100px" height="100px">
+                <br>
+                <a href="View-Unit/View-Unit.php?unit_id=<?php echo $row ['unit_id']?>">View Unit</a>
+                
+
+
+
+            <?php
+        }
+
+    }
+
+    ?>
     <div class="footer" style="background: #4C707E; height: 60vh;">
         <div class="container p-5">
             <p class="h3 text-white" style="font-family: 'Poppins', sans-serif; font-weight: 500;">For Inquiries, Contact Us</p>

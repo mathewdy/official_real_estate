@@ -13,6 +13,9 @@ $_SESSION['type'];
 $_SESSION['floor_area'] ;
 $_SESSION['total_price_contract'] ;
 $_SESSION['option_equity'];
+$user_id = $_SESSION['user_id'];
+
+$room_id = $_SESSION['room_id'];
 
 ?>
 
@@ -49,6 +52,27 @@ $_SESSION['option_equity'];
         <br>
         <input type="submit" name="proof_of_payment" value="Send Payment">
     </form>
+
+    <?php
+    
+    $sql_remaining_balance = "SELECT units.total_price_contract, home_owners.payment_receive,
+        (units.total_price_contract - SUM(home_owners.payment_receive)) AS remaining_balance
+        FROM units
+        LEFT JOIN 
+        home_owners ON units.unit_id = home_owners.unit_id 
+        WHERE user_id = '$user_id' AND home_owners.room_id = '$room_id' ";
+
+    $run_remaining_balance = mysqli_query($conn,$sql_remaining_balance);
+
+    if(mysqli_num_rows($run_remaining_balance) > 0){
+        foreach($run_remaining_balance as $row){
+            ?>
+                <h4>Your Remaining balance is...</h4> <p><?php echo $row ['remaining_balance']?></p>
+            <?php
+        }
+    }
+    
+    ?>
 </body>
 
 <script src="https://www.paypal.com/sdk/js?client-id=AYa-7RBfwKBTKHH_iVn1c5R5Y8I3MxjiiKKDqaca6se6bBWlu_DaR4590zyiAKe0uVKzoooGPOSfhY9c&currency=PHP"></script>
