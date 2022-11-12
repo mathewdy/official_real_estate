@@ -71,6 +71,7 @@ if(isset($_POST['login'])){
                     $_SESSION['email'] = $result_fetch['email'];
                     $_SESSION['first_name'] = $result_fetch['first_name'];
                     $_SESSION['last_name'] = $result_fetch['last_name'];
+                    $_SESSION['contact_number'] = $result_fetch['contact_number'];
                     header("Location: Home.php");
                 }else{
                     echo "User Not found 2" . $conn->error;

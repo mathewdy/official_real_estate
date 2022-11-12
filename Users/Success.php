@@ -32,6 +32,20 @@ if(mysqli_num_rows($run_room_id) > 0){
     $run = mysqli_query($conn,$sql);
 
     if($run){
+
+
+        /*
+        require_once 'vendor/autoload.php';
+        $MessageBird = new \MessageBird\Client('rQykO8vX5lfFhmh045Wfoilw0');
+        $Message = new \MessageBird\Objects\Message();
+        $Message->originator = '+639614507751';
+        $Message->recipients = $contact_number;
+        $Message->body = "You already paid your monthly payment for your $room_id amounting $option_equity
+        Thank you so much.
+        ";
+
+        $MessageBird->messages->create($Message);
+        */
         echo"added unit owner";
         unset($_SESSION['unit_id']);
         unset($_SESSION['reservation_fee']);
