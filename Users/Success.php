@@ -11,6 +11,7 @@ $_SESSION['user_id']. '<br>';
 $_SESSION['unit_id'] . '<br>';
 $_SESSION['reservation_fee'];
 $reservation_fee = $_SESSION['reservation_fee'];
+$contact_number = $_SESSION['contact_number'];
 
 $user_id = $_SESSION['user_id'];
 $unit_id = $_SESSION['unit_id'];

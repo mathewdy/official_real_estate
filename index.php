@@ -231,7 +231,7 @@ ob_start();
 
     <?php
 
-    $query_select = "SELECT * FROM units LIMIT";
+    $query_select = "SELECT * FROM units";
     $run_select = mysqli_query($conn,$query_select);
 
     if(mysqli_fetch_array($run_select) > 0){
