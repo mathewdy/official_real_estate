@@ -204,12 +204,15 @@ $user_id = $_SESSION['user_id'];
                             <td><?php echo $row_account['payment_method']?></td>
                             <td>
 
+                                
                                 <?php
-                                    if($row_account ['payment_status'] == '1'){
-                                        echo '<a href="pdf.php?user_id=<?php echo $row_account [user_id]?>" target="_blank">Generate Invoice</a>';
-                                    }else{
-                                        echo "";
-                                    }   
+
+                                if($row_account['payment_status'] == '1'){
+                                    echo
+                                    "<a href='pdf.php?user_id=$row_account[user_id]' target=_blank>Generate Invoice</a>";
+
+                                }
+                                
                                 ?>
                             </td>
                             
