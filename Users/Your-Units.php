@@ -17,11 +17,41 @@ $user_id = $_SESSION['user_id'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../src/styles/boostrap/bootstrap.css">
     <link rel="stylesheet" href="css/headers.css">
     <title>Real Estate Management</title>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#" >El Pueblo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="home.php">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Units.php">Units</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+            <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+            </svg>
+
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="logout.php">Log Out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <header class="p-3 bg-dark text-white">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -60,73 +90,42 @@ $user_id = $_SESSION['user_id'];
       </div>
     </div>
   </header>
-    <h2>Your Units</h2>
-
-    <table>
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Unit Id</th>
-                <th>Room Id</th>
-                <th>Model</th>
-                <th>Type</th>
-                <th>Floor Area</th>
-                <th>Total Price Contract</th>
-                <th>Your Monthy Equity</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="container">
+    <h2>Availed Units</h2>
+        <ol class="list-group list-group-numbered">
+            <?php 
+               $query = "SELECT units.unit_id AS unit_id, units.model AS model, home_owners.room_id AS room_id, units.floor_area AS floor_area, units.total_price_contract AS total_price_contract, units.option_equity AS option_equity,
+               home_owners.payment_receive AS payment_receive, home_owners.payment_method AS payment_method,  home_owners.unit_id , home_owners.user_id AS user_id , units.type AS type, home_owners.date_time_created AS date_time_created
+               FROM units
+               LEFT JOIN home_owners ON units.unit_id = home_owners.unit_id
+               WHERE home_owners.user_id = '$user_id' AND home_owners.payment_equity = 'Reservation Fee' ";
+               $run = mysqli_query($conn,$query);
+               if(mysqli_num_rows($run) > 0){
+                $no = 1;
+                foreach ($run as $row){
+            ?>
+            <li class="list-group-item d-flex align-items-start">
+                <form action="" method="POST" class="d-flex justify-content-around align-items-start w-100">
+                    <div class="ms-2 me-auto d-flex flex-column">
+                        <input type="text" class="fw-bold" style="border:none; outline:none; background:none;" name="model" value="<?php echo $row ['model']?>" readonly>
+                        <input type="text" style="border:none; outline:none; background:none;" name="unit_id" value="<?php echo 'Unit ID: ' . $row ['unit_id']?>" readonly>
+                    </div>
+                    <div class="me-auto d-flex flex-column">
+                        <input type="text" style="border:none; outline:none; background:none;" name="room_id" value="<?php echo 'Room ID: '.$row ['room_id']?>"readonly>
+                        <input type="text" style="border:none; outline:none; background:none;" name="type" value="<?php echo 'Type: '. $row ['type']?>"readonly>
+                    </div>
+                    <div class="me-auto d-flex flex-column">
+                        <input type="text" style="border:none; outline:none; background:none;" name="floor_area" value="<?php echo 'Floor Area: '. $row ['floor_area']?>"readonly>
+                        <input type="text" style="border:none; outline:none; background:none;" name="total_price_contract" value="<?php echo 'Total Price: ' .'₱'.$row ['total_price_contract']?>" readonly>   
+                    </div>
+                    <div class="me-auto d-flex flex-column">
+                        <input type="text" style="border:none; outline:none; background:none;" name="option_equity" value="<?php echo 'Option Equity: '.'₱'.$row ['option_equity']?>" readonly>
+                        <input type="hidden" name="process" value="1" readonly>   
+                    </div>
+                    <span class="badge bg-primary rounded-pill"><input type="submit" name="pay_room_id" value="Pay" style="background:none; border: none; color: rgba(255,255,255,0.7); z-index: 11111;"></span>
+                </form>
+            </li>
             <?php
-
-                //query 1
-                $query = "SELECT units.unit_id AS unit_id, units.model AS model, home_owners.room_id AS room_id, units.floor_area AS floor_area, units.total_price_contract AS total_price_contract, units.option_equity AS option_equity,
-                home_owners.payment_receive AS payment_receive, home_owners.payment_method AS payment_method,  home_owners.unit_id , home_owners.user_id AS user_id , units.type AS type, home_owners.date_time_created AS date_time_created
-                FROM units
-                LEFT JOIN home_owners ON units.unit_id = home_owners.unit_id
-                WHERE home_owners.user_id = '$user_id' AND home_owners.payment_equity = 'Reservation Fee' ";
-                $run = mysqli_query($conn,$query);
-
-                
-                if(mysqli_num_rows($run) > 0){
-                    $no = 1;
-                    foreach ($run as $row){
-                        ?>
-                        
-                        <tr>
-                            <form action="" method="POST">
-                            <td><?php echo $no?></td>
-                            <td>
-                                <input type="text" name="unit_id" value="<?php echo $row ['unit_id']?>" readonly>
-                            </td>
-                            <td>
-                               <input type="text" name="room_id" value="<?php echo $row ['room_id']?>"readonly>
-                            </td>
-                            <td>
-                                
-                                <input type="text" name="model" value="<?php echo $row ['model']?>"readonly>
-                            </td>
-                            <td>
-                                <input type="text" name="type" value="<?php echo $row ['type']?>"readonly>
-                            </td>
-                            <td>
-                                <input type="text" name="floor_area" value="<?php echo $row ['floor_area']?>"readonly>
-                            </td>
-                            <td>
-                                <input type="text" name="total_price_contract" value="<?php echo $row ['total_price_contract']?>" readonly>   
-                            </td>
-                            <td>
-                                <input type="text" name="option_equity" value="<?php echo $row ['option_equity']?>" readonly>
-                            </td>
-                                <input type="hidden" name="process" value="1" readonly>
-                            <td>
-                                <input type="submit" name="pay_room_id" value="Make a payment">
-                            </td>
-                            </form>
-                        </tr>
-
-
-
-                        <?php
                     $no++;
                     }
                 }else{
@@ -134,8 +133,8 @@ $user_id = $_SESSION['user_id'];
                 }
 
             ?>
-        </tbody>
-    </table>
+            </ol>
+                   
 
     <h3>Statement of Account</h3>
     <table>
@@ -227,7 +226,7 @@ $user_id = $_SESSION['user_id'];
             ?>
         </tbody>
     </table>
-
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
