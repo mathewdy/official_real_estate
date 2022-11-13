@@ -228,7 +228,11 @@ ob_start();
 
     ?> -->
 
+    <div class="container d-flex justify-content-center">
 
+    <span>
+
+    
     <?php
 
     $query_select = "SELECT * FROM units";
@@ -253,14 +257,17 @@ ob_start();
     }
 
     ?>
-    <h2>FAQ</h2>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta voluptatibus animi itaque, vel quam, neque ullam cumque incidunt eum nemo, molestiae provident quasi. Labore quibusdam et nesciunt quidem? Fugit pariatur saepe perferendis cupiditate. Vel deserunt nulla quidem temporibus similique suscipit maxime consequatur facilis voluptate tempora, architecto doloremque ipsa cupiditate placeat.</p>
+    </span>
+    </div>
+    <section class="text-center container">
+        <h2>FAQ</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta voluptatibus animi itaque, vel quam, neque ullam cumque incidunt eum nemo, molestiae provident quasi. Labore quibusdam et nesciunt quidem? Fugit pariatur saepe perferendis cupiditate. Vel deserunt nulla quidem temporibus similique suscipit maxime consequatur facilis voluptate tempora, architecto doloremque ipsa cupiditate placeat.</p>
 
-    <h2>About us</h2>
-    <p>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit cumque reiciendis nihil vero quo unde doloribus nulla, quae libero, accusamus odit quisquam quos officiis molestiae necessitatibus asperiores harum quasi dolore consequuntur, temporibus adipisci! Maiores, suscipit, assumenda repudiandae magnam vero atque, quidem aliquam culpa eos numquam explicabo totam soluta facilis eligendi.
-    </p>
-    
+        <h2 class="mt-5">About us</h2>
+        <p class="mb-5">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit cumque reiciendis nihil vero quo unde doloribus nulla, quae libero, accusamus odit quisquam quos officiis molestiae necessitatibus asperiores harum quasi dolore consequuntur, temporibus adipisci! Maiores, suscipit, assumenda repudiandae magnam vero atque, quidem aliquam culpa eos numquam explicabo totam soluta facilis eligendi.
+        </p>
+    </section>
 
     <div class="footer" style="background: #4C707E; height: 60vh;">
         <div class="container p-5">
