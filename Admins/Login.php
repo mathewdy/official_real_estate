@@ -12,21 +12,36 @@ include('../connection.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/login.css">
+    <title>Real Estate Management</title>
 </head>
 <body>
+
+
+<main class="form-signin">
+  <form action="" method="POST">
+        <center>
+            <h2>El Pueblo Condormitel</h2>
+        </center>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name="username" placeholder="Username">
+      <label for="floatingInput">Username</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit" name="login">Sign in</button>
+  
+  </form>
+    <a href="forgot-password.php" style="text-decoration: none;">Forgot Password</a>
+    <br>
+</main>
     
-    <form action="Login.php" method="POST">
-        <h1>Log in Admin</h1>
-        <label for="">Username</label>
-        <br>
-        <input type="text" name="username">
-        <br>
-        <label for="">Password</label>
-        <br>
-        <input type="password" name="password">
-        <br>
-        <input type="submit" name="login" value="Log In">
-    </form>
 
 </body>
 </html>

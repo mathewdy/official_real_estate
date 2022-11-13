@@ -231,14 +231,14 @@ $start_page = ($page-1)*05;
                 <form action="" method="POST" class="d-flex justify-content-around align-items-start w-100">
                     <div class="ms-2 me-auto d-flex flex-column">
                         <input type="text" class="fw-bold" style="border:none; outline:none; background:none;" name="model" value="<?php echo $row ['model']?>" readonly>
-                        <input type="text" style="border:none; outline:none; background:none;" name="unit_id" value="<?php echo 'Unit ID: ' . $row ['unit_id']?>" readonly>
-                        <input type="text" style="border:none; outline:none; background:none;" name="room_id" value="<?php echo 'Room ID: '.$row ['room_id']?>"readonly>
-                        <input type="text" style="border:none; outline:none; background:none;" name="type" value="<?php echo 'Type: '. $row ['type']?>"readonly>
+                        <input type="text" style="border:none; outline:none; background:none;" name="unit_id" value="<?php echo  $row ['unit_id']?>" readonly>
+                        <input type="text" style="border:none; outline:none; background:none;" name="room_id" value="<?php echo  $row ['room_id']?>"readonly>
+                        <input type="text" style="border:none; outline:none; background:none;" name="type" value="<?php echo  $row ['type']?>"readonly>
                     </div>
                     <div class="me-auto d-flex flex-column">
-                        <input type="text" style="border:none; outline:none; background:none;" name="floor_area" value="<?php echo 'Floor Area: '. $row ['floor_area']?>"readonly>
-                        <input type="text" style="border:none; outline:none; background:none;" name="total_price_contract" value="<?php echo 'Total Price: ' .'₱'.$row ['total_price_contract']?>" readonly>   
-                        <input type="text" style="border:none; outline:none; background:none;" name="option_equity" value="<?php echo 'Option Equity: '.'₱'.$row ['option_equity']?>" readonly>
+                        <input type="text" style="border:none; outline:none; background:none;" name="floor_area" value="<?php echo  $row ['floor_area']?>"readonly>
+                        <input type="text" style="border:none; outline:none; background:none;" name="total_price_contract" value="<?php echo $row ['total_price_contract']?>" readonly>   
+                        <input type="text" style="border:none; outline:none; background:none;" name="option_equity" value="<?php echo $row ['option_equity']?>" readonly>
                         <input type="hidden" name="process" value="1" readonly>   
                     </div>
                     <span class="badge bg-primary rounded-pill"><input type="submit" name="pay_room_id" value="Pay" style="background:none; border: none; color: rgba(255,255,255,0.7); z-index: 11111;"></span>

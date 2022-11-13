@@ -32,19 +32,17 @@ $run = mysqli_query($conn,$sql);
 if($run) {
     /*
     require_once 'vendor/autoload.php';
-    $MessageBird = new \MessageBird\Client('rQykO8vX5lfFhmh045Wfoilw0');
+    $MessageBird = new \MessageBird\Client('sA5Lcu5czwv2rfBM62Cq8wBqL');
     $Message = new \MessageBird\Objects\Message();
-    $Message->originator = '+639614507751';
+    $Message->originator = '+639156915704';
     $Message->recipients = $contact_number;
-    $Message->body = "You already paid your monthly payment for your $room_id amounting $option_equity
-    Thank you so much.
+    $Message->body = "You already paid your monthly payment for your $room_id amounting $option_equity Thank you so much.
     ";
-
     $MessageBird->messages->create($Message);
     */
 
 
-    echo "<script>window.location.href='Your-Units.php' </script>";
+    echo "<script>window.location.href='Home.php' </script>";
 }else{
     echo "error"  . $conn->error;
 }

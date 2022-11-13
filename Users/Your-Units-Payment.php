@@ -16,7 +16,9 @@ $_SESSION['option_equity'];
 $user_id = $_SESSION['user_id'];
 
 $room_id = $_SESSION['room_id'];
-$_SESSION['contact_number'];
+echo $_SESSION['contact_number'] . '<br>';
+
+echo $option_equity = $_SESSION['option_equity'];
 
 ?>
 
@@ -29,13 +31,13 @@ $_SESSION['contact_number'];
     <title>Document</title>
 </head>
 <body>
-    <a href="Your-Units.php">Cancel</a>
+    <a href="home.php">Cancel</a>
 
     <form action="" method="POST" enctype="multipart/form-data">
         <h2>Pay Via</h2>
         <h3>You are about to pay:</h3>
         <p><?php echo $_SESSION['option_equity']?></p>
-        <div id="paypal-payment-button"></div>
+        <div id="paypal-payment-container"></div>
             <h3>Or</h3>
         <label for="">Online Deposit through our company bank account.</label>
         <br>
@@ -76,30 +78,30 @@ $_SESSION['contact_number'];
     ?>
 </body>
 
-<script src="https://www.paypal.com/sdk/js?client-id=AYa-7RBfwKBTKHH_iVn1c5R5Y8I3MxjiiKKDqaca6se6bBWlu_DaR4590zyiAKe0uVKzoooGPOSfhY9c&currency=PHP"></script>
-<script>
-     
-    paypal.Buttons({
-        createOrder: function(data,actions){
-            return actions.order.create({
-                purchase_units:[{
-                amount: {
-                    value:'<?php echo $_SESSION['option_equity']?>'
-                }
-            }]
-        });
-    },
-    onApprove: function(data,actions){
+<script src="https://www.paypal.com/sdk/js?client-id=AUj--PBoyv8NYabpajfLbebT3-ExaJXgFn2LoBUIGERgjCigCsoDE5v0Jh8-Fu3UuebksnggnF5eauT4&currency=PHP"></script>
+</script>
+    <script>
+        paypal.Buttons({
+            createOrder: function(data,actions){
+                return actions.order.create({
+                    purchase_units:[
+                        {
+                            amount:{
+                                value:'<?php echo $option_equity ?>'
+                            }
+                        }
+                    ]
+                });
+            },
+            onApprove: function(data,actions){
         return actions.order.capture().then(function(details){
 
             window.location.replace("http://<?php echo $_SERVER['SERVER_NAME']?>/official_real_estate/Users/Success-Monthly-Payment.php")
-                
 
         })
     }
-    }).render('#paypal-payment-button');
-   
-</script>
+        }).render('#paypal-payment-container');        
+    </script>
 </html>
 
 
