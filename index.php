@@ -65,21 +65,21 @@ ob_start();
         </div>
         <div class="row p-5 pt-1">
             <div class="col-xxl-4">
-                <div class="card" style="border: none; background: url(images/model.jpg); height:100%; background-size: cover;">
+                <div class="card" style="border: none; background: url(images/rico.png); height:100%; background-size: cover;">
                     <div class="card-inner d-flex align-items-end" style="border:none; background: rgba(0,0,0,0.3); height:100%; z-index: 1111;">
                         <p class="h1 text-white" style="font-family: 'Allura', cursive; font-weight: 400;">-Bonito-</p>
                     </div>
                 </div>
             </div>
             <div class="col-xxl-4">
-                <div class="card" style="border: none; background: url(images/model.jpg); height:100%; background-size: cover;">
+                <div class="card" style="border: none; background: url(images/amore2.jpg); height:100%; background-size: cover;">
                     <div class="d-flex align-items-end" style="border:none; background: rgba(0,0,0,0.3); height:100%; z-index: 1111;">
                         <p class="h1 text-white" style="font-family: 'Allura', cursive; font-weight: 400;">-Amore-</p>
                     </div>
                 </div>
             </div>
             <div class="col-xxl-4" style="height: 25em;">
-                <div class="card" style="border: none; background: url(images/model.jpg); height:100%; background-size: cover;">
+                <div class="card" style="border: none; background: url(images/mema.jpg); height:100%; background-size: cover;">
                     <div class="d-flex align-items-end" style="border:none; background: rgba(0,0,0,0.3); height:100%; z-index: 1111;">
                         <p class="h1 text-white" style="font-family: 'Allura', cursive; font-weight: 400;">-Mucho-</p>
                     </div>
@@ -253,6 +253,15 @@ ob_start();
     }
 
     ?>
+    <h2>FAQ</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta voluptatibus animi itaque, vel quam, neque ullam cumque incidunt eum nemo, molestiae provident quasi. Labore quibusdam et nesciunt quidem? Fugit pariatur saepe perferendis cupiditate. Vel deserunt nulla quidem temporibus similique suscipit maxime consequatur facilis voluptate tempora, architecto doloremque ipsa cupiditate placeat.</p>
+
+    <h2>About us</h2>
+    <p>
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit cumque reiciendis nihil vero quo unde doloribus nulla, quae libero, accusamus odit quisquam quos officiis molestiae necessitatibus asperiores harum quasi dolore consequuntur, temporibus adipisci! Maiores, suscipit, assumenda repudiandae magnam vero atque, quidem aliquam culpa eos numquam explicabo totam soluta facilis eligendi.
+    </p>
+    
+
     <div class="footer" style="background: #4C707E; height: 60vh;">
         <div class="container p-5">
             <p class="h3 text-white" style="font-family: 'Poppins', sans-serif; font-weight: 500;">For Inquiries, Contact Us</p>

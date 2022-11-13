@@ -21,14 +21,6 @@ if(isset($_GET['page'])){
 $num_per_page = 05;
 $start_page = ($page-1)*05;
 
-
-
-$query_page = "SELECT units.unit_id AS unit_id, units.model AS model, home_owners.room_id AS room_id, units.floor_area AS floor_area, units.total_price_contract AS total_price_contract, units.option_equity AS option_equity,
-home_owners.payment_receive AS payment_receive, home_owners.payment_method AS payment_method,  home_owners.unit_id , home_owners.user_id AS user_id , units.type AS type, home_owners.date_time_created AS date_time_created, home_owners.payment_equity AS payment_equity,home_owners.payment_status AS payment_status
-FROM units
-LEFT JOIN home_owners ON units.unit_id = home_owners.unit_id
-WHERE home_owners.user_id = '$user_id' ORDER BY home_owners.date_time_created DESC LIMIT $start_page,$num_per_page";
-$run_query_page = mysqli_query($conn,$query_page);
 ?>
 
 <!DOCTYPE html>
@@ -291,7 +283,7 @@ $run_query_page = mysqli_query($conn,$query_page);
                 home_owners.payment_receive AS payment_receive, home_owners.payment_method AS payment_method,  home_owners.unit_id , home_owners.user_id AS user_id , units.type AS type, home_owners.date_time_created AS date_time_created, home_owners.payment_equity AS payment_equity,home_owners.payment_status AS payment_status
                 FROM units
                 LEFT JOIN home_owners ON units.unit_id = home_owners.unit_id
-                WHERE home_owners.user_id = '$user_id' ORDER BY home_owners.date_time_created DESC";
+                WHERE home_owners.user_id = '$user_id' ORDER BY home_owners.date_time_created DESC LIMIT $start_page, $num_per_page";
                 $run_account = mysqli_query($conn,$query_statement_of_Account);
 
                 if(mysqli_num_rows($run_account) > 0){
@@ -365,7 +357,7 @@ $run_query_page = mysqli_query($conn,$query_page);
 
     <?php
 
-        $query_page_2 = "SELECT units.unit_id AS unit_id, units.model AS model, home_owners.room_id AS room_id, units.floor_area AS floor_area, units.total_price_contract AS total_price_contract, units.option_equity AS option_equity,
+        $query_page_2 = "SELECT units.id AS id,  units.unit_id AS unit_id, units.model AS model, home_owners.room_id AS room_id, units.floor_area AS floor_area, units.total_price_contract AS total_price_contract, units.option_equity AS option_equity,
         home_owners.payment_receive AS payment_receive, home_owners.payment_method AS payment_method,  home_owners.unit_id , home_owners.user_id AS user_id , units.type AS type, home_owners.date_time_created AS date_time_created, home_owners.payment_equity AS payment_equity,home_owners.payment_status AS payment_status
         FROM units
         LEFT JOIN home_owners ON units.unit_id = home_owners.unit_id
