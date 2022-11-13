@@ -71,68 +71,7 @@ $run_query_page = mysqli_query($conn,$query_page);
     </div>
   </div>
 </nav>
-    <!-------for appointments ito----->
-    <table  class="table table-hover table-success">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Appointment ID</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Appointment Status</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-
-            $sql_appointments = "SELECT * FROM appointments WHERE admin_or_user_id = '$user_id'";
-            $run_your_appointments = mysqli_query($conn,$sql_appointments);
-            //gagawa pa ako pagination
-
-            if(mysqli_num_rows($run_your_appointments) > 0){
-                $no = 1;
-
-                foreach($run_your_appointments as $row){
-                    ?>
-
-                        <tr>
-                            <td><?php echo $no."."?></td>
-                            <td><?php echo $row ['appointment_id']?></td>
-                            <td><?php 
-                                    $date = $row['date'];
-                                    $date = str_replace('/', '-', $date);
-                                    echo date('M-d-Y', strtotime($date));
-                                ?></td>
-                            <td><?php echo $row ['time']?></td>
-                            <td>
-                                <?php if($row ['appointment_status'] == '1')
-                                {
-                                    echo "Confirmed";
-                                }else{
-                                    echo "Pending";
-
-                                }
-                                ?>
-                            </td>
-                        </tr>
-
-                    <?php
-
-                $no++;
-
-                }
-            }
-
-
-        ?>
-        </tbody>
-    </table>
-
-
-
-    <a href="">BUTTON NG APPOINTMENT</a>
-    <br>
-
+<div class="container-xxl container-lg py-5">
     <!----query ng fucking pangalan ng user--->
 
     <?php
@@ -224,11 +163,67 @@ $run_query_page = mysqli_query($conn,$query_page);
 
     </div>
     </div>
+    <!-------for appointments ito----->
+    <div class="table-responsive my-5">
+    <table  class="table table-hover table-success">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Appointment ID</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Appointment Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
 
-    
-<div class="container">
+            $sql_appointments = "SELECT * FROM appointments WHERE admin_or_user_id = '$user_id'";
+            $run_your_appointments = mysqli_query($conn,$sql_appointments);
+            //gagawa pa ako pagination
+
+            if(mysqli_num_rows($run_your_appointments) > 0){
+                $no = 1;
+
+                foreach($run_your_appointments as $row){
+                    ?>
+
+                        <tr>
+                            <td><?php echo $no."."?></td>
+                            <td><?php echo $row ['appointment_id']?></td>
+                            <td><?php 
+                                    $date = $row['date'];
+                                    $date = str_replace('/', '-', $date);
+                                    echo date('M-d-Y', strtotime($date));
+                                ?></td>
+                            <td><?php echo $row ['time']?></td>
+                            <td>
+                                <?php if($row ['appointment_status'] == '1')
+                                {
+                                    echo "Confirmed";
+                                }else{
+                                    echo "Pending";
+
+                                }
+                                ?>
+                            </td>
+                        </tr>
+
+                    <?php
+
+                $no++;
+
+                }
+            }
+
+
+        ?>
+        </tbody>
+    </table>
+    </div>
     <h2>Availed Units</h2>
-        <ol class="list-group list-group-numbered">
+    <div class="container-fluid p-0 m-0">
+        <ol class="list-group list-group-numbered p-0">
             <?php 
                $query = "SELECT units.unit_id AS unit_id, units.model AS model, home_owners.room_id AS room_id, units.floor_area AS floor_area, units.total_price_contract AS total_price_contract, units.option_equity AS option_equity,
                home_owners.payment_receive AS payment_receive, home_owners.payment_method AS payment_method,  home_owners.unit_id , home_owners.user_id AS user_id , units.type AS type, home_owners.date_time_created AS date_time_created
@@ -245,16 +240,12 @@ $run_query_page = mysqli_query($conn,$query_page);
                     <div class="ms-2 me-auto d-flex flex-column">
                         <input type="text" class="fw-bold" style="border:none; outline:none; background:none;" name="model" value="<?php echo $row ['model']?>" readonly>
                         <input type="text" style="border:none; outline:none; background:none;" name="unit_id" value="<?php echo 'Unit ID: ' . $row ['unit_id']?>" readonly>
-                    </div>
-                    <div class="me-auto d-flex flex-column">
                         <input type="text" style="border:none; outline:none; background:none;" name="room_id" value="<?php echo 'Room ID: '.$row ['room_id']?>"readonly>
                         <input type="text" style="border:none; outline:none; background:none;" name="type" value="<?php echo 'Type: '. $row ['type']?>"readonly>
                     </div>
                     <div class="me-auto d-flex flex-column">
                         <input type="text" style="border:none; outline:none; background:none;" name="floor_area" value="<?php echo 'Floor Area: '. $row ['floor_area']?>"readonly>
                         <input type="text" style="border:none; outline:none; background:none;" name="total_price_contract" value="<?php echo 'Total Price: ' .'₱'.$row ['total_price_contract']?>" readonly>   
-                    </div>
-                    <div class="me-auto d-flex flex-column">
                         <input type="text" style="border:none; outline:none; background:none;" name="option_equity" value="<?php echo 'Option Equity: '.'₱'.$row ['option_equity']?>" readonly>
                         <input type="hidden" name="process" value="1" readonly>   
                     </div>
@@ -270,10 +261,12 @@ $run_query_page = mysqli_query($conn,$query_page);
 
             ?>
             </ol>
-                   
+            </div>  
 
     <h3>Statement of Account</h3>
-    <table>
+    <div class="table-responsive">
+
+    <table class="table">
         <thead>
             <tr>
                 <th>Date</th>
@@ -362,7 +355,6 @@ $run_query_page = mysqli_query($conn,$query_page);
             ?>
         </tbody>
     </table>
-
     <?php
 
         $query_page_2 = "SELECT units.unit_id AS unit_id, units.model AS model, home_owners.room_id AS room_id, units.floor_area AS floor_area, units.total_price_contract AS total_price_contract, units.option_equity AS option_equity,
@@ -388,10 +380,7 @@ $run_query_page = mysqli_query($conn,$query_page);
             echo  "<a href='home.php?page=".($page+1)."' class='btn btn-primary'>Next</a>";
         }
     ?>
-
-
-<br>
-<br>
+    </div>
    
 </div>
 
