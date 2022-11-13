@@ -14,11 +14,11 @@ $_SESSION['floor_area'] ;
 $_SESSION['total_price_contract'] ;
 $_SESSION['option_equity'];
 $user_id = $_SESSION['user_id'];
-
+$_SESSION['contact_number'];
 $room_id = $_SESSION['room_id'];
-echo $_SESSION['contact_number'] . '<br>';
 
-echo $option_equity = $_SESSION['option_equity'];
+
+$option_equity = $_SESSION['option_equity'];
 
 ?>
 
@@ -28,32 +28,46 @@ echo $option_equity = $_SESSION['option_equity'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/styles/boostrap/bootstrap.css">
     <title>Document</title>
 </head>
 <body>
-    <a href="home.php">Cancel</a>
-
+<div class="container p-5 shadow mt-5">
     <form action="" method="POST" enctype="multipart/form-data">
-        <h2>Pay Via</h2>
-        <h3>You are about to pay:</h3>
-        <p><?php echo $_SESSION['option_equity']?></p>
-        <div id="paypal-payment-container"></div>
-            <h3>Or</h3>
-        <label for="">Online Deposit through our company bank account.</label>
-        <br>
-        <strong>
-        PHOENIX SUN INTERNATIONAL CORP.
-        <br>
-        PHILIPPINES NATIONAL BANK – 7th Ave. Branch,BGC Taguig City
-        <br>
-        ACCOUNT NO. : 144-170001114
-        </strong>
-        <p>Then Send a proof of payment here!</p>
-        <strong>Note: It will take a 3 business days for prior notice and you will recieve a confirmation details via email</strong>
-        <br>
-        <input type="file" name="image">
-        <br>
-        <input type="submit" name="proof_of_payment" value="Send Payment">
+        <span class="d-flex justify-content-between">
+            <h2>Pay Via</h2>
+            <a href="home.php" class="btn-close"></a>
+
+        </span>
+        <h3>You are about to pay : <?php echo '₱'. $_SESSION['option_equity']?></h3>
+        <div class="row">
+            <div class="col-lg-5 d-flex align-items-center">
+                <div id="paypal-payment-container" class="w-100"></div>
+            </div>
+            <div class="col-lg-2 text-center d-flex justify-content-center align-items-center">
+                <h3>Or</h3>
+            </div>
+            <div class="col-lg-5">
+                <label for="" class="h5">Online Deposit through our company bank account.</label>
+                <br>
+                <strong>
+                PHOENIX SUN INTERNATIONAL CORP.
+                <br>
+                PHILIPPINES NATIONAL BANK – 7th Ave. Branch,BGC Taguig City
+                <br>
+                ACCOUNT NO. : 144-170001114
+                </strong>
+                <p>Then Send a proof of payment here!</p>
+                <strong class="text-danger">Note: It will take a 3 business days for prior notice and you will recieve a confirmation details via email</strong>
+                <br>
+                <input type="file" class="form-control" name="image">
+                <br>
+                <input type="submit" name="proof_of_payment" class="btn btn-md btn-primary" style="border-radius: 0;" value="Send Payment">
+            </div>
+        </div>
+        
+        
+        
     </form>
 
     <?php
@@ -70,12 +84,15 @@ echo $option_equity = $_SESSION['option_equity'];
     if(mysqli_num_rows($run_remaining_balance) > 0){
         foreach($run_remaining_balance as $row){
             ?>
-                <h4>Your Remaining balance is...</h4> <p><?php echo $row ['remaining_balance']?></p>
+            <h4>Remaining Balance : <?php echo '₱'.$row ['remaining_balance']?></h4>
+
             <?php
         }
     }
     
     ?>
+</div>
+    
 </body>
 
 <script src="https://www.paypal.com/sdk/js?client-id=AUj--PBoyv8NYabpajfLbebT3-ExaJXgFn2LoBUIGERgjCigCsoDE5v0Jh8-Fu3UuebksnggnF5eauT4&currency=PHP"></script>
