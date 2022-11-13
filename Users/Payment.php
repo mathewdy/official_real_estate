@@ -19,37 +19,46 @@ $_SESSION['reservation_fee'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../src/styles/boostrap/bootstrap.css">
+    <title>Payment</title>
 </head>
 <body>
-    <a href="Home.php">Cancel</a>
-    <h2>Payment Methods</h2>
-
+<div class="container p-5 shadow mt-5">
     <form action="" method="POST" enctype="multipart/form-data">
+        <span class="d-flex justify-content-between">
+            <h2>Pay Via</h2>
+            <a href="home.php" class="btn-close"></a>
 
-        <h2>Pay Via</h2>
-
-        <h3>You are about to pay:</h3>
-        <p><?php echo $_SESSION['reservation_fee']?></p>
-
-            <div id="paypal-payment-button"></div>
+        </span>
+        <h3>You are about to pay : <?php echo '₱'. $_SESSION['reservation_fee']?></h3>
+        <div class="row">
+            <div class="col-lg-5 d-flex align-items-center">
+                <div id="paypal-payment-button" class="w-100"></div>
+            </div>
+            <div class="col-lg-2 text-center d-flex justify-content-center align-items-center">
                 <h3>Or</h3>
-            <label for="">Online Deposit through our company bank account.</label>
-            <br>
-            <strong>
-            PHOENIX SUN INTERNATIONAL CORP.
-            <br>
-            PHILIPPINES NATIONAL BANK – 7th Ave. Branch,BGC Taguig City
-            <br>
-            ACCOUNT NO. : 144-170001114
-        </strong>
-        <p>Then Send a proof of payment here!</p>
-        <strong>Note: It will take a 3 business days for prior notice and you will recieve a confirmation details via email</strong>
-        <br>
-        <input type="file" name="image">
-        <br>
-        <input type="submit" name="proof_of_payment" value="Send Payment">
+            </div>
+            <div class="col-lg-5">
+                <label for="" class="h5">Online Deposit through our company bank account.</label>
+                <br>
+                <strong>
+                PHOENIX SUN INTERNATIONAL CORP.
+                <br>
+                PHILIPPINES NATIONAL BANK – 7th Ave. Branch,BGC Taguig City
+                <br>
+                ACCOUNT NO. : 144-170001114
+                </strong>
+                <p>Then Send a proof of payment here!</p>
+                <strong class="text-danger">Note: It will take a 3 business days for prior notice and you will recieve a confirmation details via email</strong>
+                <br>
+                <input type="file" class="form-control" name="image">
+                <br>
+                <input type="submit" name="proof_of_payment" class="btn btn-md btn-primary" style="border-radius: 0;" value="Send Payment">
+            </div>
+        </div>
     </form>
+</div>
+    
 </body>
 </html>
 
