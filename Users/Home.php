@@ -10,6 +10,24 @@ $user_id = $_SESSION['user_id'];
 if(empty($_SESSION['user_id'])){
     echo "<script>window.location.href='Login.php' </script>";
 }
+
+
+if(isset($_GET['page'])){
+    $page = $_GET['page'];
+}else{
+    $page = 1;
+}
+
+$num_per_page = 05;
+$start_page = ($page-1)*05;
+
+
+
+$query_page = "SELECT units.unit_id AS unit_id, units.model AS model, home_owners.room_id AS room_id, units.floor_area AS floor_area, units.total_price_contract AS total_price_contract, units.option_equity AS option_equity,
+home_owners.payment_receive AS payment_receive, home_owners.payment_method AS payment_method,  home_owners.unit_id , home_owners.user_id AS user_id , units.type AS type, home_owners.date_time_created AS date_time_created, home_owners.payment_equity AS payment_equity,home_owners.payment_status AS payment_status
+FROM units
+LEFT JOIN home_owners ON units.unit_id = home_owners.unit_id
+WHERE home_owners.user_id = '$user_id' ORDER BY home_owners.date_time_created DESC LIMIT $start_page,$num_per_page";
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +40,7 @@ if(empty($_SESSION['user_id'])){
     <title>Real Estate Management</title>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
   <div class="container">
     <a class="navbar-brand" href="home.php" >El Pueblo</a>
@@ -108,7 +127,77 @@ if(empty($_SESSION['user_id'])){
         </tbody>
     </table>
 
- 
+
+
+    <a href="">BUTTON NG APPOINTMENT</a>
+    <br>
+
+    <!----query ng fucking pangalan ng user--->
+
+    <?php
+
+        $sql_users = "SELECT * FROM users WHERE user_id = '$user_id'";
+        $run_users = mysqli_query($conn,$sql_users);
+
+        if(mysqli_num_rows($run_users) > 0){
+            foreach($run_users as $row_users){
+                ?>
+
+                    <label for="">Name:</label>
+                    <p><?php echo $row_users ['first_name'] ." " . $row_users['last_name']?></p>
+                    <label for="">Contact Number:</label>
+                    <p><?php echo $row_users ['contact_number']?></p>
+                    <label for="">Email:</label>
+                    <p><?php echo $row_users['email']?></p>
+                    <!---modal for edit button--->
+                    <a href="edit-profile.php?user_id=<?php echo $row_users['user_id']?>">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                        </svg>
+                    </a>
+
+                <?php
+            }
+        }
+
+    ?>
+
+
+
+    <?php
+
+        //UPDATE USER
+        if(isset($_GET['user_id'])){
+            $user_id = $_GET['user_id'];
+
+            $sql_user_edit_profile = "SELECT * FROM users WHERE user_id = '$user_id' ";
+            $run_edit_profile = mysqli_query($conn,$sql_user_edit_profile);
+
+            if(mysqli_num_rows($run_edit_profile) > 0){
+                foreach($run_edit_profile as $row_profiles){
+                    ?>
+                        <form action="" method="POST">
+
+                        <input type="hidden" name="user_id" value="<?php echo $row_profiles['user_id']?>">
+                        <label for="">First Name:</label>
+                        <input type="text" name="first_name" value="<?php echo $row_profiles['first_name']?>" required>
+                        <label for="">Middle Name:</label>
+                        <input type="text" name="middle_name" value="<?php echo $row_profiles['middle_name']?>" required>
+                        <label for="">Last Name:</label>
+                        <input type="text" name="last_name" value="<?php echo $row_profiles['last_name']?>" required>
+                        <label for="">Contact Number:</label>
+                        <input type="text" name="contact_number" value="<?php echo $row_profiles['contact_number']?>" required>
+                        <label for="">Email:</label>
+                        <input type="text" name="email" value="<?php echo $row_profiles['email']?>">
+                        <input type="submit" name="update_profile" value="Update">
+                        </form>
+                    <?php
+                }
+            }
+        }
+    ?>
+
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -272,6 +361,37 @@ if(empty($_SESSION['user_id'])){
             ?>
         </tbody>
     </table>
+
+    <?php
+
+        $query_page_2 = "SELECT units.unit_id AS unit_id, units.model AS model, home_owners.room_id AS room_id, units.floor_area AS floor_area, units.total_price_contract AS total_price_contract, units.option_equity AS option_equity,
+        home_owners.payment_receive AS payment_receive, home_owners.payment_method AS payment_method,  home_owners.unit_id , home_owners.user_id AS user_id , units.type AS type, home_owners.date_time_created AS date_time_created, home_owners.payment_equity AS payment_equity,home_owners.payment_status AS payment_status
+        FROM units
+        LEFT JOIN home_owners ON units.unit_id = home_owners.unit_id
+        WHERE home_owners.user_id = '$user_id' ORDER BY home_owners.date_time_created DESC";
+        $run_page_2 = mysqli_query($conn,$query_page_2);
+        $total_record = mysqli_num_rows($run_page_2);
+
+        $total_page = ceil($total_record / $num_per_page);
+
+        if($page > 1){
+            echo  "<a href='home.php?page=".($page-1)."' class='btn btn-primary'>Previous</a>";
+        }
+
+        for($i=1;$i<$total_page;$i++){
+            echo  "<a href='home.php?page=".$i."' class='btn btn-primary'>$i</a>";
+
+        }
+
+        if($i > $page){
+            echo  "<a href='home.php?page=".($page+1)."' class='btn btn-primary'>Next</a>";
+        }
+    ?>
+
+
+<br>
+<br>
+   
 </div>
 
 
@@ -349,6 +469,28 @@ if(isset($_POST['add_appointment'])){
     }
 
     
+}
+
+//update button profile
+
+if(isset($_POST['update_profile'])){
+    $first_name = $_POST['first_name'];
+    $middle_name = $_POST['middle_name'];
+    $last_name = $_POST['last_name'];
+    $contact_number = $_POST['contact_number'];
+    $email = $_POST['email'];
+    $user_id = $_POST['user_id'];
+
+    $update_user_info = "UPDATE users SET first_name = '$first_name' , middle_name = '$middle_name' , last_name = '$last_name', contact_number = '$contact_number', email= '$email' WHERE users_id = '$user_id'";
+    $run_update_info = mysqli_query($conn,$update_user_info);
+
+    if($run_update_info){
+        echo "<script>window.location.href='Home.php' </script>";
+    }else{
+        echo "error" . $conn->error;
+    }
+
+
 }
 
 
