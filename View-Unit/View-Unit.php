@@ -68,11 +68,11 @@ if(isset($_GET['unit_id'])){
                                 <input type="text" name="model" class="h4" style="border:none; outline: none;" value="<?php echo $row ['model']?>" readonly>
                             </div>
                             <div class="col-lg-12 d-flex justify-content-between">
-                                <label for="" class="fw-bold h3">Type</label>
+                                <label for="" class="fw-bold h3">Type:</label>
                                 <input type="text" name="type" class="h4" style="border:none; outline: none;" value="<?php echo $row ['type']?>" readonly >
                             </div>
                             <div class="col-lg-12 d-flex justify-content-between">
-                                <label for="" class="fw-bold h3">Available Units</label>
+                                <label for="" class="fw-bold h3">Available Units:</label>
                                 <input type="number" name="available" class="h4" style="border:none; outline: none;" value="<?php echo $row ['available']?>" readonly>
                             </div>
                             <div class="col-lg-12 d-flex justify-content-between">
@@ -142,7 +142,7 @@ if(isset($_POST['get_unit'])){
         $_SESSION['option_equity'] = $option_equity;
         $_SESSION['bank_financing'] = $bank_financing;
         $_SESSION['reservation_fee'] = $reservation_fee;
-        header("Location: Registration.php");
+        header("Location: ../Users/Registration.php");
     }else{
         echo "error" . $conn->error;
     }
