@@ -127,7 +127,7 @@ $start_page = ($page-1)*05;
 
 
     <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="appointment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
@@ -153,6 +153,7 @@ $start_page = ($page-1)*05;
     </div>
     <!-------for appointments ito----->
     <div class="table-responsive my-5">
+    <a href="" class="btn btn-md btn-primary my-3" style="border-radius:0;" data-bs-toggle="modal" data-bs-target="#appointment">New Appointment</a>
     <table  class="table table-hover table-success">
         <thead>
             <tr>
@@ -226,25 +227,42 @@ $start_page = ($page-1)*05;
             <li class="list-group-item d-flex align-items-start">
                 <form action="" method="POST" class="d-flex justify-content-around align-items-start w-100">
                     <div class="ms-2 me-auto d-flex flex-column">
+                        <span class="d-flex">
                         <label for="" class="form-control fw-bold" style="border:none; outline: none;">Model:</label>
                         <input type="text" style="border:none; outline:none; background:none;" name="model" value="<?php echo $row ['model']?>" readonly>
+                        </span>
+                        <span class="d-flex">
                         <label for="" class="form-control fw-bold" style="border:none; outline: none;">Unit Id:</label>
                         <input type="text" style="border:none; outline:none; background:none;" name="unit_id" value="<?php echo  $row ['unit_id']?>" readonly>
+                        </span>
+                        <span class="d-flex">
                         <label for="" class="form-control fw-bold" style="border:none; outline: none;">Room Id:</label>
                         <input type="text" style="border:none; outline:none; background:none;" name="room_id" value="<?php echo  $row ['room_id']?>"readonly>
+                        </span>
+                        <span class="d-flex">
                         <label for="" class="form-control fw-bold" style="border:none; outline: none;">Type:</label>
                         <input type="text" style="border:none; outline:none; background:none;" name="type" value="<?php echo  $row ['type']?>"readonly>
+                        </span>
                     </div>
                     <div class="me-auto d-flex flex-column">
+                        <span class="d-flex">
                         <label for="" class="form-control fw-bold" style="border:none; outline: none;">Floor Area:</label>
                         <input type="text" style="border:none; outline:none; background:none;" name="floor_area" value="<?php echo  $row ['floor_area']?>"readonly>
+                        </span>
+                        <span class="d-flex">
                         <label for="" class="form-control fw-bold" style="border:none; outline: none;">Total Price Contract:</label>
                         <input type="text" style="border:none; outline:none; background:none;" name="total_price_contract" value="<?php echo $row ['total_price_contract']?>" readonly>   
+                        </span>
+                        <span class="d-flex">
                         <label for="" class="form-control fw-bold" style="border:none; outline:none; background:none;" >Monthly Dues:</label>
                         <input type="text" style="border:none; outline:none; background:none;" name="option_equity" value="<?php echo $row ['option_equity']?>" readonly>
+                        </span>
+                    
+                        
+  
                         <input type="hidden" name="process" value="1" readonly>   
                     </div>
-                    <span class="badge bg-primary rounded-pill"><input type="submit" name="pay_room_id" value="Pay" style="background:none; border: none; color: rgba(255,255,255,0.7); z-index: 11111;"></span>
+                    <input type="submit" name="pay_room_id" class="btn btn-md btn-primary" value="Payment">
                 </form>
             </li>
             <?php
