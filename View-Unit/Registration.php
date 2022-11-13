@@ -192,7 +192,7 @@ $mail = new PHPMailer(true);
             </div>
             <div class="col-lg-12 mt-4 text-center">
             <input type="submit" class="btn btn-md btn-primary" name="register" value="Sign Up">
-                <a href="Login.php">Log In</a>
+                <a href="../users/Login.php">Log In</a>
 
             </div>
         </div>

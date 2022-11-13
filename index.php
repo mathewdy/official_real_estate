@@ -48,7 +48,7 @@ ob_start();
             <p class="display-2 text-white" style="font-family: 'Poppins', sans-serif;">Condormitel</p>
             <p class="h5 text-white" style="font-family: 'Poppins', sans-serif;">Lorem ipsum, dolor sit amet consectetur.</p>
             <span>
-            <a href="" class="btn btn-dark mt-5" style="font-family: 'Poppins', sans-serif; border-radius: 0;">Get Started</a>
+            <a href="users/login.php" class="btn btn-dark mt-5" style="font-family: 'Poppins', sans-serif; border-radius: 0;">Get Started</a>
             </span>
         </div>
     </div>

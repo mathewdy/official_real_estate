@@ -94,7 +94,7 @@ $start_page = ($page-1)*05;
                             <div class="modal-header">
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="" method="POST">
+                            <form action="update-profile.php" method="POST">
                             <div class="modal-body">
                                 <label for="">First Name:</label>
                                 <input type="text" name="first_name" class="form-control" value="<?php echo $row_users['first_name']?>" required>
@@ -106,6 +106,7 @@ $start_page = ($page-1)*05;
                                 <input type="text" name="contact_number" class="form-control" value="<?php echo $row_users['contact_number']?>" required>
                                 <label for="">Email:</label>
                                 <input type="text" name="email" class="form-control" value="<?php echo $row_users['email']?>">
+                                <input type="hidden" name="user_id" value="<?php echo $row_users['user_id']?>">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -124,39 +125,6 @@ $start_page = ($page-1)*05;
     ?>
 
 
-
-    <?php
-
-        //UPDATE USER
-        if(isset($_GET['user_id'])){
-            $user_id = $_GET['user_id'];
-
-            $sql_user_edit_profile = "SELECT * FROM users WHERE user_id = '$user_id' ";
-            $run_edit_profile = mysqli_query($conn,$sql_user_edit_profile);
-
-            if(mysqli_num_rows($run_edit_profile) > 0){
-                foreach($run_edit_profile as $row_profiles){
-                    ?>
-                        <form action="" method="POST">
-
-                        <input type="hidden" name="user_id" value="<?php echo $row_profiles['user_id']?>">
-                        <label for="">First Name:</label>
-                        <input type="text" name="first_name" value="<?php echo $row_profiles['first_name']?>" required>
-                        <label for="">Middle Name:</label>
-                        <input type="text" name="middle_name" value="<?php echo $row_profiles['middle_name']?>" required>
-                        <label for="">Last Name:</label>
-                        <input type="text" name="last_name" value="<?php echo $row_profiles['last_name']?>" required>
-                        <label for="">Contact Number:</label>
-                        <input type="text" name="contact_number" value="<?php echo $row_profiles['contact_number']?>" required>
-                        <label for="">Email:</label>
-                        <input type="text" name="email" value="<?php echo $row_profiles['email']?>">
-                        <input type="submit" name="update_profile" value="Update">
-                        </form>
-                    <?php
-                }
-            }
-        }
-    ?>
 
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -258,14 +226,21 @@ $start_page = ($page-1)*05;
             <li class="list-group-item d-flex align-items-start">
                 <form action="" method="POST" class="d-flex justify-content-around align-items-start w-100">
                     <div class="ms-2 me-auto d-flex flex-column">
-                        <input type="text" class="fw-bold" style="border:none; outline:none; background:none;" name="model" value="<?php echo $row ['model']?>" readonly>
+                        <label for="" class="form-control fw-bold" style="border:none; outline: none;">Model:</label>
+                        <input type="text" style="border:none; outline:none; background:none;" name="model" value="<?php echo $row ['model']?>" readonly>
+                        <label for="" class="form-control fw-bold" style="border:none; outline: none;">Unit Id:</label>
                         <input type="text" style="border:none; outline:none; background:none;" name="unit_id" value="<?php echo  $row ['unit_id']?>" readonly>
+                        <label for="" class="form-control fw-bold" style="border:none; outline: none;">Room Id:</label>
                         <input type="text" style="border:none; outline:none; background:none;" name="room_id" value="<?php echo  $row ['room_id']?>"readonly>
+                        <label for="" class="form-control fw-bold" style="border:none; outline: none;">Type:</label>
                         <input type="text" style="border:none; outline:none; background:none;" name="type" value="<?php echo  $row ['type']?>"readonly>
                     </div>
                     <div class="me-auto d-flex flex-column">
+                        <label for="" class="form-control fw-bold" style="border:none; outline: none;">Floor Area:</label>
                         <input type="text" style="border:none; outline:none; background:none;" name="floor_area" value="<?php echo  $row ['floor_area']?>"readonly>
+                        <label for="" class="form-control fw-bold" style="border:none; outline: none;">Total Price Contract:</label>
                         <input type="text" style="border:none; outline:none; background:none;" name="total_price_contract" value="<?php echo $row ['total_price_contract']?>" readonly>   
+                        <label for="" class="form-control fw-bold" style="border:none; outline:none; background:none;" >Monthly Dues:</label>
                         <input type="text" style="border:none; outline:none; background:none;" name="option_equity" value="<?php echo $row ['option_equity']?>" readonly>
                         <input type="hidden" name="process" value="1" readonly>   
                     </div>
