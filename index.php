@@ -262,11 +262,71 @@ ob_start();
     </div>
     <section class="text-center container">
         <h2 id="Faq">FAQ</h2>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta voluptatibus animi itaque, vel quam, neque ullam cumque incidunt eum nemo, molestiae provident quasi. Labore quibusdam et nesciunt quidem? Fugit pariatur saepe perferendis cupiditate. Vel deserunt nulla quidem temporibus similique suscipit maxime consequatur facilis voluptate tempora, architecto doloremque ipsa cupiditate placeat.</p>
+        <p>1. Can a buyer install an Airconditioning unit? What are the requirements?
+            </p>
+            <p>
+            Yes, an air-conditioning unit can be installed subject to the following mandatory requirements:
+            </p>
+      
+            <p> Installation of a canopy, together with the airconditioning unit.
+            The approval by Management.
+            Approval of the Developer or the authorized assigned party of the Developer as to type, design, location and manner of installation.
+            Buyer shall shoulder the expense with regard to the canopy and its installation.</p>
 
-        <h2 class="mt-5" id="About">About us</h2>
+           
+
+        <p> 2. Is there a reservation fee? If so, how much? Does it form part of the Purchase Price?</p>
+        <p> Yes, there is a reservation fee for Residential units amount of Php 15,000, Commercial units amount of Php 25,000 and Parking slots amount of Php 10,000. The purpose of the fee is to enable the buyer to reserve a unit for a period of 30 days. The reservation is not refundable and forms part of the purchase price.</p>
+
+        <p> 3. How will the buyer pay the Equity?</p>
+        <p>The equity shall be paid on equal monthly installments using postdated checks (PDC), which is mandatory, for a period depending on the terms chosen by the buyer. In case the purchased unit is ready for turnover, but the required equity has not been fully paid yet, the buyer has to pay the remaining balance of the equity and await the approval from the Bank Financing whichever is applicable before he/she could moves in.</p>
+
+        <p>4. What are the other charges that I need to settle on top of the Total Contract Price?</p>
+        <p>a). Transfer of Title which is approximately 6% of the Total Contract Price.</p>
+        <p>b). Bank charges which is approximately 3% of the Loan Value.</p>
+        <p> c). Move-in fees which covers the Electric service fee and water meter deposit amount of Php 12,500.</p>
+        <p>d). Joining Fee and Monthly dues (Php 51 pesos per sqm)</p>
+       
+        <p> 5. How soon can a buyer move in the unit?</p>
+        <p>The buyer can move-in to a completed unit upon:</p>
+        <p>a). Completion of equity requirement and</p>
+        <p> b). loan approval of any financing institution for the balance, if applicable or</p>
+        <p> c). submission of all post-dated checks, if In-house financing</p>
+        <p> d). payment of other charges and turn-over charges</p>
+      
+        <p> 6. What facilities/services can I expect at El Pueblo?</p>
+        <p>El Pueblo One QC Swimming Pools, Sports Facilities (basketball court, badminton court, table-tennis court, jogging path) Convenience Store, Visitor’s Lobby, Office and Commercial Spaces, Drying Cage, Organic Landscaping, Free Piano & Art Lesson (for kids), activity area.</p>
+        <p>  El Pueblo Manila Swimming Pools, Sports Facilities (basketball court, jogging path) Convenience Store, Visitor’s Lobby, office and Commercial Spaces, Drying Cage, Organic Landscaping, Free Piano & Art Lesson (for kids), activity area.</p>
+        
+        <p>7. Where and when can I see the model units?</p>
+        <p>Our model units are located at El Pueblo Site located at Anonas St., Sta. Mesa Manila right beside PUP Main Campus and at #44 King Christian St., Kingspoint Subd. Novaliches, Quezon City. These can be viewed everyday from Monday to Sunday from 9:00AM to 6:00PM. During holidays, please call the office for proper scheduling. And also you can visit head office located at the unit 801 One Park Drive Bldg. 9 th ave. corner 11 th drive BGC. Taguig.</p>
+        <p> 8. Can the unit be opened for lease?</p>
+        <p> The unit can be opened for lease subject to the limitations and restrictions provided for in the Master Deed with Declaration of Restrictions.</p>
+        <p>9. Is the water and electric meter included in the total contract price?</p>
+        <p> No</p>
+        <p>10. Is there a discount if the unit is paid for in cash?</p>
+        <p> Yes. A discount of 7% shall be given to buyers who will pay in spot cash. Please contact your broker or our office for the details and latest promo discounts.</p>
+
+        <p>  11. What if I defaulted in payment of any of the installment fee?</p>
+        <p> In case of default, the full amount becomes due, payable and demandable. The seller may cancel or rescind the contract or demand the full amount of the total principal sum together with the penalties for default.</p>
+       
+     
+       <p>12. Will there be a grace period for payment in case of default?</p>
+        <p>Yes, there is. After the Notice of Default, the buyer shall be given a sixty (60)-day grace period to pay the amount due. If payment has not been made after the grace period, a Notice of Cancellation shall be given, within 30 days after receipt of which, the buyer has to settle the amount due. If the buyer still fails to comply, the unit shall be offered to other prospective buyers.</p>
+
+        <p>  13. What will happen if I don’t comply?</p>
+        <p> Reservation and the contract to sell, maybe possibly cancelled and the previous installments paid by the buyer shall be forfeited in favor of the seller. The seller should not be obliged to refund payments made by the buyer subject only to the provisions of RA6552, known as the “Realty Installment Protection Act”.</p>
+            
+
+            <p> CLAUSE</p>
+            <p>This FAQ shall form part of the Reservation Application executed by the buyer, hence the knowledge of both parties as to the content of this FAQ is valid and binding.</p>
+
+            <h2 class="mt-5">About us</h2>
         <p class="mb-5">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit cumque reiciendis nihil vero quo unde doloribus nulla, quae libero, accusamus odit quisquam quos officiis molestiae necessitatibus asperiores harum quasi dolore consequuntur, temporibus adipisci! Maiores, suscipit, assumenda repudiandae magnam vero atque, quidem aliquam culpa eos numquam explicabo totam soluta facilis eligendi.
+       
+        The Owner/Developer Ms. Grace B. Eleazar has been in the real estate business since 1983, concentrating on the high-end market, both for residential and business use. When she started Wholesome Lifestyle Supermarket. She became aware of this special niche of residential end-user market which is not effectively being addressed by other developers.
+
+        El Pueblo is an offshoot of her passion to provide an upgraded standard of living for the majority of her employees. This bias towards an upliftment in lifestyle was translated into this unique concept of providing compact but decent, upgraded but highly affordable dwelling units.EL Pueblo's concepts were based on three major philosophies: Respect for nature, Lifestyle integration and Understanding of Human needs, which when put together will result in Quality of Life. El Pueblo is not just a home, but an environmentally sound upliftment in the standards of living of the urban work force. 
         </p>
     </section>
 

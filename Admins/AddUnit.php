@@ -42,10 +42,9 @@ if(isset($_POST['add_unit'])){
     $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
     if(!in_array($file_extension,$allowed_extension)){
         echo "<script>alert('File not allowed'); </script>";
-        echo "<script>window.location.href='AddUnit.php'</script>";
     }else{
         
-        if(file_exists("upload/" .$_FILES['image']['name'])){
+        if(file_exists("uploads/" .$_FILES['image']['name'])){
             $filename = $_FILES['image']['name'];
         }else{
             $query_insert_unit = "INSERT INTO units (unit_id,model,type,floor_area,available,total_price_contract,reservation_fee,net_equity,option_equity,bank_financing,image,date_time_created,date_time_updated) VALUES ('$unit_id', '$model','$type','$floor_area','$available', '$total_price_contract','$reservation_fee', '$net_equity', '$option_equity', '$bank_financing', '$image','$date $time', '$date $time')";
