@@ -6,68 +6,6 @@ if(empty($_SESSION['username'])){
     echo "<script>window.location.href='Login.php' </script>";
 }
 // lagay ako ng LIMIT for numbers of condo etc etc
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Create Unit</h1>
-
-    <a href="Units.php">Back</a>
-
-    <form action="" method="POST" enctype="multipart/form-data">
-        <label for="">Model</label>
-        <br>
-        <input type="text" name="model">
-        <br>
-        <label for="">Type</label>
-        <br>
-        <input type="text" name="type">
-        <br>
-        <label for="">Floor Area</label>
-        <br>
-        <input type="text" name="floor_area">
-        <br>
-        <label for="">Number of Available Units</label>
-        <br>
-        <input type="number" name="available">
-        <br>
-        <label for="">Total Price Contract</label>
-        <br>
-        <input type="number" name="total_price_contract">
-        <br>
-        <label for="">Reservation Fee</label>
-        <br>
-        <input type="number" name="reservation_fee">
-        <br>
-        <label for="">Net Equity</label>
-        <br>
-        <input type="number" name="net_equity">
-        <br>
-        <label for="">Option Equity</label>
-        <br>
-        <input type="number" name="option_equity">
-        <br>
-        <label for="">Bank Financing</label>
-        <br>
-        <input type="number" name="bank_financing">
-        <br>
-        <label for="">Image</label>
-        <br>
-        <input type="file" name="image" id="" >
-        <br>
-        <input type="submit" name="add_unit" value="Add Unit">
-    </form>
-
-</body>
-</html>
-
-<?php
 
 if(isset($_POST['add_unit'])){
 
