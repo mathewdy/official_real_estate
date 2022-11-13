@@ -228,36 +228,37 @@ ob_start();
 
     ?> -->
 
-    <div class="container d-flex justify-content-center">
+    <div class="container my-5">
+        <div class="row">
+        <?php
 
-    <span>
+        $query_select = "SELECT * FROM units";
+        $run_select = mysqli_query($conn,$query_select);
 
-    
-    <?php
-
-    $query_select = "SELECT * FROM units";
-    $run_select = mysqli_query($conn,$query_select);
-
-    if(mysqli_fetch_array($run_select) > 0){
-        foreach($run_select as $row){
-            
-            ?>
-                <p><?php echo $row ['model']?></p>
-                <p><?php echo $row ['type']?></p>
-                <img src="<?php echo "Admins/uploads/". $row['image']?>" alt="Image" width="100px" height="100px">
-                <br>
-                <a href="View-Unit/View-Unit.php?unit_id=<?php echo $row ['unit_id']?>">View Unit</a>
+        if(mysqli_fetch_array($run_select) > 0){
+            foreach($run_select as $row){
                 
+                ?>
+                <div class="col-lg-4">
+                <div class="card">
+                    <img src="<?php echo "Admins/uploads/". $row['image']?>" alt="Image" width="100px" height="200px" class="card-img-top">
+                    <div class="card-body">
+                        <p><?php echo 'Model: '.$row ['model']?></p>
+                        <p><?php echo 'Type: '.$row ['type']?></p>
+                        <br>
+                        <a href="View-Unit/View-Unit.php?unit_id=<?php echo $row ['unit_id']?>">View Unit</a>
+                    </div>
+                </div>
+                </div>
+                
+                    
+                <?php
+            }
 
-
-
-            <?php
         }
 
-    }
-
-    ?>
-    </span>
+        ?>
+        </div>
     </div>
     <section class="text-center container">
         <h2>FAQ</h2>
