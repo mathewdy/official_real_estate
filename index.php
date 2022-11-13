@@ -34,10 +34,10 @@ ob_start();
                     <a class="nav-link text-white px-3" href="#" style="font-family: 'Poppins', sans-serif; font-size: 1em;">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link text-white px-3" href="#" style="font-family: 'Poppins', sans-serif; font-size: 1em;">About</a>
+                    <a class="nav-link text-white px-3" href="#About" style="font-family: 'Poppins', sans-serif; font-size: 1em;">About</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link text-white px-3" href="#" style="font-family: 'Poppins', sans-serif; font-size: 1em;">FAQ</a>
+                    <a class="nav-link text-white px-3" href="#Faq" style="font-family: 'Poppins', sans-serif; font-size: 1em;">FAQ</a>
                     </li>
                 </ul>
                 </div>
@@ -261,10 +261,10 @@ ob_start();
         </div>
     </div>
     <section class="text-center container">
-        <h2>FAQ</h2>
+        <h2 id="Faq">FAQ</h2>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta voluptatibus animi itaque, vel quam, neque ullam cumque incidunt eum nemo, molestiae provident quasi. Labore quibusdam et nesciunt quidem? Fugit pariatur saepe perferendis cupiditate. Vel deserunt nulla quidem temporibus similique suscipit maxime consequatur facilis voluptate tempora, architecto doloremque ipsa cupiditate placeat.</p>
 
-        <h2 class="mt-5">About us</h2>
+        <h2 class="mt-5" id="About">About us</h2>
         <p class="mb-5">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit cumque reiciendis nihil vero quo unde doloribus nulla, quae libero, accusamus odit quisquam quos officiis molestiae necessitatibus asperiores harum quasi dolore consequuntur, temporibus adipisci! Maiores, suscipit, assumenda repudiandae magnam vero atque, quidem aliquam culpa eos numquam explicabo totam soluta facilis eligendi.
         </p>
