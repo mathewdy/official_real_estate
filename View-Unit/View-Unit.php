@@ -100,6 +100,8 @@ if(isset($_POST['get_unit'])){
     $option_equity = $_POST['option_equity'];
     $reservation_fee = $_POST['reservation_fee'];
     $process = $_POST['process'];
+    $room_id  = "C3".rand('11','30') . substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 3);
+
 
 
     
@@ -112,6 +114,7 @@ if(isset($_POST['get_unit'])){
         $_SESSION['option_equity'] = $option_equity;
         $_SESSION['bank_financing'] = $bank_financing;
         $_SESSION['reservation_fee'] = $reservation_fee;
+        $_SESSION['room_id'] = $room_id;
         header("Location: Registration.php");
     }else{
         echo "error" . $conn->error;
