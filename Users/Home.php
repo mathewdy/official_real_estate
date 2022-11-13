@@ -28,6 +28,7 @@ home_owners.payment_receive AS payment_receive, home_owners.payment_method AS pa
 FROM units
 LEFT JOIN home_owners ON units.unit_id = home_owners.unit_id
 WHERE home_owners.user_id = '$user_id' ORDER BY home_owners.date_time_created DESC LIMIT $start_page,$num_per_page";
+$run_query_page = mysqli_query($conn,$query_page);
 ?>
 
 <!DOCTYPE html>
